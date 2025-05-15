@@ -11,9 +11,9 @@
       </div>
       <% if helpers.authenticated? %>
         <div class="flex shrink-0 items-center mr-1">
-          <%= image_tag 'freepik_avatar.svg', class:"h-8 w-auto rounded-2xl" %>
+          <%#= image_tag 'freepik_avatar.svg', class:"h-8 w-auto rounded-2xl" %>
         </div>
-        <div class="text-white bold mr-2"><%= Current.user.username %></div>
+        <%= link_to Current.user.display_name, user_path(id: Current.user.id), { class: "text-white bold mr-2" } %>
         <%= link_to "Logout", session_path, data: { turbo_method: :delete }, class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2.5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
       <% else %>
         <%= link_to "Login", new_session_path, {class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"} %>

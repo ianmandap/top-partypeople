@@ -1,0 +1,34 @@
+<% @events.each do |event| %>
+  <div class="mt-2 mb-2 w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+    <a href="#">
+      <%= image_tag 'kelsey-chance-tAH2cA_BL5g-unsplash.jpg', class: "p-8 rounded-t-lg", alt: "party image" %>
+    </a>
+    <div class="px-5 pb-5">
+      <a href="#">
+        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white"><%= event.title %></h5>
+      </a>
+      <div class=text-white>
+        <div class="flex items-center justify-start">
+          <%= image_tag 'freepik_avatar.svg', class:"h-8 w-auto rounded-2xl mr-2" %>
+          <span>Hosted by <%= event.creator.display_name %></span>
+        </div>
+      </div>
+      <div class="flex items-center mt-2.5 mb-5">
+        <span class="text-white mr-2 text-xs"><%= event.formatted_date %></span>
+        <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-sm dark:bg-blue-200 dark:text-blue-800">|pin| <%= event.location %></span>
+      </div>
+      <div>
+        <div class="text-white my-3">
+          <%= event.description %>
+        </div>
+      </div>
+      <div class="flex items-center justify-between">
+        <div class="flex shrink-0 items-center mr-1">
+          <%= image_tag 'freepik_avatar.svg', class:"h-8 w-auto rounded-2xl mr-2" %>
+        </div>
+        <span class="text-sm font-bold text-gray-900 dark:text-white">Mary and 3 others are attending</span>
+        <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">See more</a>
+      </div>
+    </div>
+  </div>
+<% end %>

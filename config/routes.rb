@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :events
   root "events#index"
+
+  resources :users
+  resources :events
   resource :session
   resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
