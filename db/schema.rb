@@ -16,6 +16,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_15_044805) do
 
   create_table "events", force: :cascade do |t|
     t.integer "creator_id"
+    t.string "title"
     t.datetime "date"
     t.string "location"
     t.text "description"
