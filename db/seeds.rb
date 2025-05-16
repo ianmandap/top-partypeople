@@ -4,7 +4,7 @@ def create_user
 end
 
 def create_event(user = create_user)
-  Event.create(creator: user, title: Faker::Lorem.word, date: Random.rand(3..12).days.from_now, description: Faker::Lorem.paragraph, location: Faker::Lorem.word)
+  Event.create(creator: user, title: Faker::Lorem.word, date: Random.rand(3..12).days.from_now, description: Faker::Lorem.paragraph_by_chars * 5, location: Faker::Lorem.word)
 end
 
 4.times { create_event }

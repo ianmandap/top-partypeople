@@ -6,6 +6,6 @@ class Event < ApplicationRecord
   validates :location, presence: true
 
   def formatted_date
-    date.strftime("%c %Z")
+    date.strftime("%A, %B %d, %Y %I:%M %p")
   end
 end
