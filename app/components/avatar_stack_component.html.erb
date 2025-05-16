@@ -1,0 +1,32 @@
+<% if @attendees.any? %>
+  <div class="flex flex-row">
+    <div class="flex -space-x-4 rtl:space-x-reverse">
+      <% @attendees.each_with_index do |attendee, idx| %>
+        <!-- if third attendee, put icon stating how many attendees are left -->
+        <% if idx == 2 %>
+          <%= render AvatarsStackModalComponent.new(size: @attendees.size - idx, attendees: @attendees) %>
+          <%#= render AvatarPlaceholderComponent.new(placeholder_initial: "#{@attendees.size - idx}+" ) %>
+          <% break %>
+        <% end %>
+        <%= render AvatarPlaceholderComponent.new(placeholder_initial: attendee.placeholder_initial) %>
+      <% end %>
+      <!--<a class="flex items-center justify-center w-8 h-8 text-xs font-medium text-white bg-gray-700 border border-white rounded-full hover:bg-gray-600 dark:border-gray-800" href="#">+99</a>-->
+    </div>
+    <span class="ml-5 text-sm font-bold text-gray-900 dark:text-white">
+      <% if @attendees.size == 1 %>
+        <%= link_to @attendees[0].display_name, user_path(id: @attendees[0].id) %> is attending
+      <% elsif @attendees.size == 2 %>
+        <%= link_to @attendees[0].display_name, user_path(id: @attendees[0].id) %> and 
+        <%= link_to @attendees[1].display_name, user_path(id: @attendees[1].id) %> are attending
+      <% else %>
+        <%= link_to @attendees[0].display_name, user_path(id: @attendees[0].id) %>,
+        <%= link_to @attendees[1].display_name, user_path(id: @attendees[1].id) %>, 
+        and <%= @attendees.size - 2 %> others are attending
+      <% end %>
+    </span>
+  </div>
+<% else %>
+  <div class="text-sm text-gray-900 dark:text-white">
+    <span>No one has RSVP's yet</span>
+  </div>
+<% end %>
