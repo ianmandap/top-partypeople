@@ -7,4 +7,8 @@ class User < ApplicationRecord
   validates :display_name, presence: true
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
+
+  def placeholder_initial
+    display_name[0]
+  end
 end
