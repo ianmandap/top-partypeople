@@ -10,19 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_15_044805) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_16_182832) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "events", force: :cascade do |t|
-    t.integer "creator_id"
+    t.bigint "creator_id"
     t.string "title"
     t.datetime "date"
     t.string "location"
     t.text "description"
-    t.boolean "is_public", default: true
+    t.boolean "is_public", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "invites", force: :cascade do |t|
+    t.bigint "attendee_id"
+    t.bigint "event_id"
+    t.integer "status", default: 0
+    t.boolean "is_invited", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attendee_id"], name: "index_invites_on_attendee_id"
+    t.index ["event_id"], name: "index_invites_on_event_id"
   end
 
   create_table "sessions", force: :cascade do |t|
