@@ -66,3 +66,5 @@ gem "faker", "~> 3.5.1"
 gem "bcrypt", "~> 3.1.20"
 gem "hotwire-livereload"
 gem "view_component"
+
+gem "rails_icons", "~> 1.3"
