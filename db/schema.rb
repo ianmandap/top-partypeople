@@ -17,12 +17,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_16_182832) do
   create_table "events", force: :cascade do |t|
     t.bigint "creator_id"
     t.string "title"
-    t.datetime "date"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.string "location"
+    t.integer "max_capacity"
+    t.string "dress_code"
+    t.string "food_situation"
+    t.string "parking_instructions"
+    t.string "accommodation"
+    t.string "additional_info"
     t.text "description"
     t.boolean "is_public", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_events_on_creator_id"
   end
 
   create_table "invites", force: :cascade do |t|

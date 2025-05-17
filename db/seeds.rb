@@ -4,7 +4,7 @@ def create_user
 end
 
 def create_event(user = create_user)
-  Event.create!(creator: user, title: Faker::Lorem.word, date: Random.rand(3..12).days.from_now, description: Faker::Lorem.paragraph_by_chars * 5, location: Faker::Lorem.word)
+  Event.create!(creator: user, title: Faker::Lorem.word, start_date: Random.rand(3..12).days.from_now, description: Faker::Lorem.paragraph_by_chars * 5, location: Faker::Lorem.word)
 end
 
 def create_invite(event = create_event)
@@ -15,9 +15,10 @@ end
 u1 = User.create!(display_name: "John", email_address: "user@example.com", password: "password")
 u2 = User.create!(display_name: "Maya", email_address: "maya@example.com", password: "password")
 
-event1 = Event.create!(creator: u1, date: 7.days.from_now, location: "My house", description: "let's party!", title: "Let's go!")
-event2 = Event.create!(creator: u2, date: 7.days.from_now, location: "Beach front at City", description: "Enjoying the fresh sun", title: "Cancun Getaway")
-event3 = Event.create!(creator: create_user, date: 14.days.from_now, location: "AAA", description: "BBB", title: "ZZZ")
+event1 = Event.create!(creator: u1, start_date: 7.days.from_now, location: "My house", description: "let's party!", title: "Let's go!")
+event2 = Event.create!(creator: u2, start_date: 7.days.from_now, location: "Beach front at City", description: "Enjoying the fresh sun", title: "Cancun Getaway")
+event3 = Event.create!(creator: create_user, start_date: 14.days.from_now, location: "AAA", description: "BBB", title: "ZZZ")
+event4 = Event.create!(creator: create_user, start_date: 3.days.from_now, end_date: 4.days.from_now, location: "AAA", description: "BBB", title: "ZZZ")
 
 4.times { create_event(u1) }
 Invite.create!(event: event1, attendee: u2)
