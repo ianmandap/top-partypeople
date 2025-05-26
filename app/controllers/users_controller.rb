@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  allow_unauthenticated_access only: [ :index, :show ]
+  allow_unauthenticated_access only: [ :index, :show, :new ]
   before_action :set_user, only: %i[ show edit update destroy ]
 
   # GET /users or /users.json

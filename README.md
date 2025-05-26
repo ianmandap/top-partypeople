@@ -1,24 +1,7 @@
-# README
+### Asset Attribution
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+FavIcon Designed by [Oksana Latysheva](https://thenounproject.com/creator/latyshevaoksana/)
+Videos by [cottonbro studio](https://www.pexels.com/@cottonbro/): https://www.pexels.com/video/a-woman-dancing-expressively-with-a-glass-of-wine-on-hand-3188954/
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Photo by <a href="https://unsplash.com/@sandym10?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Sandy Millar</a> on <a href="https://unsplash.com/photos/gold-wedding-band-on-white-textile-8vaQKYnawHw?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+      

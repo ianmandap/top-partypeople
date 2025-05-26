@@ -18,7 +18,8 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body class="bg-linear-to-r from-purplerain via-pinkrain to-bluerain text-brandblack font-questrial">
+  <body 
+    class="bg-linear-to-r from-purplerain-75 via-pinkrain-75 to-bluerain-75 text-brandblack font-questrial">
     <%= render NavBarComponent.new() %>
     <main class="container mx-auto mt-24 px-5 flex">
       <%= yield %>
