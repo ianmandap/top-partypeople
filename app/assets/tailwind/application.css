@@ -1,5 +1,22 @@
+/* Custom fonts first */
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&family=Questrial&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 @import "flowbite/src/themes/default";
 @plugin "flowbite/plugin";
 @source "../../../node_modules/flowbite";
 @source "../../../node_modules/flowbite-datepicker";
+
+
+/* custom theme for brand colors */
+@theme {
+  --color-purplerain: #968ABF;
+  --color-pinkrain: #E4A8AA;
+  --color-bluerain: #BDE0FE;
+  --color-brandwhite: #FAF9FC;
+  --color-brandblack: #07060B;
+  --color-branddarkgray: #939393;
+  --color-brandlightgray: #c6c6c6;
+  --font-work-sans: "Work Sans", sans-serif;
+  --font-poetsen-one: "Poetsen One", sans-serif;
+  --font-questrial: "Questrial", sans-serif;
+}
