@@ -9,13 +9,16 @@
 
 /* custom theme for brand colors */
 @theme {
-  --color-purplerain: #968ABF;
-  --color-pinkrain: #E4A8AA;
-  --color-bluerain: #BDE0FE;
-  --color-brandwhite: #FAF9FC;
-  --color-brandblack: #07060B;
+  --color-purplerain: #CDB4DB;
+  --color-pinkrain: #FFAFCC;
+  --color-bluerain: #A2D2FF;
+  --color-purplerain-75: #F2ECF6;
+  --color-pinkrain-75: #FFEBF2;
+  --color-bluerain-75: #E8F4FF;
+  --color-brandwhite: #FFFFFF;
+  --color-brandblack: #000000;
   --color-branddarkgray: #939393;
-  --color-brandlightgray: #c6c6c6;
+  --color-brandlightgray: #f2f2f2;
   --font-work-sans: "Work Sans", sans-serif;
   --font-poetsen-one: "Poetsen One", sans-serif;
   --font-questrial: "Questrial", sans-serif;

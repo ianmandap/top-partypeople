@@ -1,15 +1,14 @@
-<% content_for :title, "Events" %>
+<% content_for :title, "Public Events" %>
 <div class="w-full">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
   <% end %>
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Events</h1>
+  <div class="flex justify-between items-center mb-5">
+    <h1 class="font-work-sans font-bold text-4xl">Public Events</h1>
     <% if authenticated? %>
-      <%= link_to "New event", new_event_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-brandwhite block font-medium" %>
+      <%= render CreateEventBtnComponent.new %>
+      <%#= link_to "New event", new_event_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-brandwhite block font-medium" %>
     <% end %>
   </div>
-  <div class="flex w-full flex-row flex-wrap justify-evenly items-start">
-    <%= render EventsCardComponent.new(events: @events) %>
-  </div>
+  <%= render EventsCardComponent.new(events: @events) %>
 </div>
