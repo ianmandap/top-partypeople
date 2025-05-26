@@ -11,7 +11,7 @@
         <%= render AvatarPlaceholderComponent.new(placeholder_initial: attendee.placeholder_initial) %>
       <% end %>
     </div>
-    <span class="ml-5 mr-2 text-sm font-bold text-gray-900 dark:text-white">
+    <span class="ml-5 mr-2 text-sm font-bold text-gray-900 dark:text-brandwhite">
       <% if @attendees.size == 1 %>
         <%= link_to @attendees[0].display_name, user_path(id: @attendees[0].id), class: "text-blue-500 hover:underline" %> is attending
       <% elsif @attendees.size == 2 %>
@@ -29,7 +29,7 @@
     </span>
   </div>
 <% else %>
-  <div class="text-sm text-gray-900 dark:text-white">
+  <div class="text-sm text-gray-900 dark:text-brandwhite">
     <span>No one has RSVP'd yet</span>
   </div>
 <% end %>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Top Partypeople" %></title>
+    <title><%= content_for(:title) || "Party People" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -14,10 +14,11 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
     <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= render 'application/favicon' %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body>
+  <body class="bg-linear-to-r from-purplerain via-pinkrain to-bluerain text-brandblack font-questrial">
     <%= render NavBarComponent.new() %>
     <main class="container mx-auto mt-24 px-5 flex">
       <%= yield %>
