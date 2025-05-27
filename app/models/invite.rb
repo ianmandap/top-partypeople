@@ -25,8 +25,6 @@ class Invite < ApplicationRecord
     attending: 1,
     maybe: 2,
     declined: 3,
-    waitlist: 4
+    waitlist: 4,
   }
-
-  validates :is_invited, inclusion: [ true, false ]
 end

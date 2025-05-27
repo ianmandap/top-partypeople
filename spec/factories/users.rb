@@ -13,10 +13,10 @@
 #
 #  index_users_on_email_address  (email_address) UNIQUE
 #
-require "test_helper"
-
-class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+FactoryBot.define do
+  factory :user do
+    display_name { Faker::Internet.user_name }
+    email_address  { Faker::Internet.email }
+    password { "password" }
+  end
 end
