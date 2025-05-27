@@ -23,9 +23,9 @@ gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
+gem "solid_cable"
 gem "solid_cache"
 gem "solid_queue"
-gem "solid_cable"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -39,6 +39,8 @@ gem "thruster", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+gem "bcrypt", "~> 3.1.20"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
@@ -47,11 +49,23 @@ group :development, :test do
   gem "brakeman", require: false
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
+  gem "annotaterb"
+  gem "faker", "~> 3.5.1"
+  gem "hotwire-livereload"
+  gem "rubocop-airbnb"
   gem "rubocop-rails-omakase", require: false
+  gem "rubocop-performance", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-rspec", require: false
+  gem "factory_bot_rails"
+  gem "ruby-lsp-factory_bot"
+  gem "fasterer"
+  gem "rspec-rails"
+  gem "rails_icons", "~> 1.3"
+  gem "view_component"
 end
 
 group :development do
-  gem "annotaterb"
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 end
@@ -60,12 +74,5 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "shoulda-matchers"
 end
-
-gem "faker", "~> 3.5.1"
-
-gem "bcrypt", "~> 3.1.20"
-gem "hotwire-livereload"
-gem "view_component"
-
-gem "rails_icons", "~> 1.3"

@@ -15,10 +15,9 @@
 #  index_invites_on_attendee_id  (attendee_id)
 #  index_invites_on_event_id     (event_id)
 #
-require "test_helper"
-
-class InviteTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+FactoryBot.define do
+  factory :invite do
+    association :event, factory: :event
+    association :attendee, factory: :user
+  end
 end

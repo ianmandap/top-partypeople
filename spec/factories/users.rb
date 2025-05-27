@@ -1,5 +1,3 @@
-<% password_digest = BCrypt::Password.create("password") %>
-
 # == Schema Information
 #
 # Table name: users
@@ -15,10 +13,10 @@
 #
 #  index_users_on_email_address  (email_address) UNIQUE
 #
-one:
-  email_address: one@example.com
-  password_digest: <%= password_digest %>
-
-two:
-  email_address: two@example.com
-  password_digest: <%= password_digest %>
+FactoryBot.define do
+  factory :user do
+    display_name { Faker::Internet.user_name }
+    email_address  { Faker::Internet.email }
+    password { "password" }
+  end
+end

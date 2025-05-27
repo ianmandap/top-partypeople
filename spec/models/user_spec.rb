@@ -13,10 +13,14 @@
 #
 #  index_users_on_email_address  (email_address) UNIQUE
 #
-require "test_helper"
+require 'rails_helper'
 
-class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+RSpec.describe User, type: :model do
+  subject(:user) { build(:user) }
+
+  context 'with valid attributes' do
+    it { is_expected.to be_valid }
+    it { is_expected.to validate_presence_of(:display_name) }
+    it { is_expected.to validate_uniqueness_of(:email_address).case_insensitive }
+  end
 end

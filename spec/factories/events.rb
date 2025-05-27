@@ -1,5 +1,3 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 # == Schema Information
 #
 # Table name: events
@@ -25,12 +23,20 @@
 #
 #  index_events_on_creator_id  (creator_id)
 #
-one:
-  date: 2025-05-15
-  location: MyString
-  is_public: false
-
-two:
-  date: 2025-05-15
-  location: MyString
-  is_public: false
+FactoryBot.define do
+  factory :event do
+    association :creator, factory: :user
+    title                { Faker::Lorem.word }
+    start_date           { Random.rand(3..12).days.from_now }
+    description          { Faker::Lorem.paragraph_by_chars * 5 }
+    location             { Faker::Lorem.word }
+    accommodation        { }
+    additional_info      { Faker::Lorem.paragraph_by_chars }
+    dress_code           { [ "Formal", "Casual", "Blacktie" ].sample }
+    end_date             { start_date + 3.hours }
+    food_situation       { Faker::Lorem.paragraph_by_chars }
+    is_public            { true }
+    max_capacity         { Random.rand(3..10) }
+    parking_instructions { Faker::Lorem.paragraph_by_chars }
+  end
+end

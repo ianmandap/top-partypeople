@@ -1,9 +1,3 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-# This model initially had no columns defined. If you add columns to the
-# model remove the "{}" from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
 # == Schema Information
 #
 # Table name: invites
@@ -21,8 +15,13 @@
 #  index_invites_on_attendee_id  (attendee_id)
 #  index_invites_on_event_id     (event_id)
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+require 'rails_helper'
+
+RSpec.describe Invite, type: :model do
+  subject(:invite) { build(:invite) }
+
+  describe 'associations' do
+    it { is_expected.to belong_to(:attendee).class_name('User') }
+    it { is_expected.to belong_to(:event).class_name('Event') }
+  end
+end
