@@ -1,28 +1,15 @@
+3.times { FactoryBot.create(:event) }
+u1 = FactoryBot.create(:user, display_name: "John", email_address: "user@example.com")
+u2 = FactoryBot.create(:user, display_name: "Maya")
 
-def create_user
-  User.create!(email_address: Faker::Internet.email, password: "password", display_name: Faker::Internet.user_name)
-end
+e1 = FactoryBot.create(:event, creator: u1)
+e2 = FactoryBot.create(:event, creator: u2)
+e3 = FactoryBot.create(:event)
 
-def create_event(user = create_user)
-  Event.create!(creator: user, title: Faker::Lorem.word, start_date: Random.rand(3..12).days.from_now, description: Faker::Lorem.paragraph_by_chars * 5, location: Faker::Lorem.word)
-end
+4.times { FactoryBot.create(:event, creator: u1) }
 
-def create_invite(event = create_event)
-  Invite.create!(event: event, attendee: create_user)
-end
-
-4.times { create_event }
-u1 = User.create!(display_name: "John", email_address: "user@example.com", password: "password")
-u2 = User.create!(display_name: "Maya", email_address: "maya@example.com", password: "password")
-
-event1 = Event.create!(creator: u1, start_date: 7.days.from_now, location: "My house", description: "let's party!", title: "Let's go!")
-event2 = Event.create!(creator: u2, start_date: 7.days.from_now, location: "Beach front at City", description: "Enjoying the fresh sun", title: "Cancun Getaway")
-event3 = Event.create!(creator: create_user, start_date: 14.days.from_now, location: "AAA", description: "BBB", title: "ZZZ")
-event4 = Event.create!(creator: create_user, start_date: 3.days.from_now, end_date: 4.days.from_now, location: "AAA", description: "BBB", title: "ZZZ")
-
-4.times { create_event(u1) }
-Invite.create!(event: event1, attendee: u2)
-3.times { create_invite(event1) }
-3.times { create_invite(event2) }
-2.times { create_invite(event3) }
-create_invite
+FactoryBot.create(:invite, event: e1, attendee: u2)
+3.times { FactoryBot.create(:invite, event: e1) }
+3.times { FactoryBot.create(:invite, event: e2) }
+2.times { FactoryBot.create(:invite, event: e3) }
+FactoryBot.create(:invite)

@@ -29,8 +29,8 @@ class Event < ApplicationRecord
   has_many :attendees, through: :invites, source: :attendee
 
   validates :title, presence: true
-  validates :end_date, numericality: { greater_than: :start_date }, allow_blank: true
   validates :start_date, presence: true
+  validates :end_date, numericality: { greater_than: :start_date }, allow_blank: true, if: Proc.new { |e| e.start_date.present? }
   validates :location, presence: true
   validates :description, presence: true
 
