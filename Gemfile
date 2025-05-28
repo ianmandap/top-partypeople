@@ -50,18 +50,21 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "annotaterb"
+  gem "factory_bot_rails"
   gem "faker", "~> 3.5.1"
+  gem "fasterer"
   gem "hotwire-livereload"
+  gem "rails_icons", "~> 1.3"
+  gem "rspec-rails"
   gem "rubocop-airbnb"
-  gem "rubocop-rails-omakase", require: false
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
+  gem "rubocop-rails-omakase", require: false
   gem "rubocop-rspec", require: false
-  gem "factory_bot_rails"
   gem "ruby-lsp-factory_bot"
-  gem "fasterer"
-  gem "rspec-rails"
-  gem "rails_icons", "~> 1.3"
+  gem "solargraph", require: false
+  gem "solargraph-rails", require: false
+  gem "solargraph-rspec", require: false
   gem "view_component"
 end
 

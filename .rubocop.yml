@@ -11,9 +11,13 @@ inherit_from:
 #   Enabled: false
 
 Style/TrailingCommaInArrayLiteral:
-  Enabled: false
+  Enabled: 
+  
+Bundler/OrderedGems:
+  Enabled: true
 
 AllCops:
   Exclude:
     - 'node_modules/**/*'
     - 'vendor/**/*'
+    - "**/*.erb"

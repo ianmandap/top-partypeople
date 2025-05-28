@@ -1,31 +1,38 @@
-<div class="flex w-full flex-row flex-wrap justify-evenly items-start">
+<div class="flex w-full flex-row flex-wrap items-start">
   <% if @events.any? %>
     <% @events.each do |event| %>
-      <div class="hover:brightness-80 cursor-pointer p-3 mx-2 my-4 w-full max-w-sm 
-                 bg-transparent border-gray-700 text-brandblack
+      <div class="hover:brightness-80 cursor-pointer p-3 mx-2 my-4 w-65 sm:w-full max-w-sm 
+                 bg-transparent text-brandblack
                  hover:bg-brandlightgray">
         <a href=<%= event_path(id: event.id) %>>
-          <%= image_tag 'kelsey-chance-tAH2cA_BL5g-unsplash.jpg', class: "aspect-square object-contain", alt: "party image" %>
-          <div class="mt-2">
-          <h5 class="text-xl font-semibold tracking-tight"><%= event.title %></h5>
-          <div class="">
-            <div class="flex items-center justify-start">
-              <span class="">Hosted by</span>
-              <span class='ml-1.5'>
-                <%= render AvatarPlaceholderComponent.new(placeholder_initial: event.creator.placeholder_initial) %>
-              </span>
-              <span class="ml-1.5"><%= event.creator.display_name %></span>
-            </div>
-          </div>
-          <div class="flex items-center justify-between">
-            <%= render AvatarStackComponent.new(attendees: event.attendees,
-                                          modal_id: helpers.generate_attendees_modal_id) %>
+          <div class="relative">
+            <%= image_tag 'kelsey-chance-tAH2cA_BL5g-unsplash.jpg', 
+              class: "h-auto w-65 sm:w-full aspect-square object-cover", alt: "party image" %>
+            <span class="absolute top-[8px] left-[8px] 
+            bg-brandwhite text-brandblack text-sm font-bold me-2 px-2.5 py-0.5 rounded-full">
+          <%= helpers.formatted_date_and_time(event.start_date) %>
+        </span>
+      </div>
+      <div class="mt-2">
+        <h5 class="text-xl font-semibold tracking-tight"><%= event.title %></h5>
+        <div class="">
+          <div class="flex items-center justify-start">
+            <span class="">Hosted by</span>
+            <span class='ml-1.5'>
+              <%= render AvatarPlaceholderComponent.new(placeholder_initial: event.creator.placeholder_initial) %>
+            </span>
+            <span class="ml-1.5"><%= event.creator.display_name %></span>
           </div>
         </div>
-      </a>
-    </div>
-  <% end %>
+        <div class="flex items-center justify-between">
+          <%= render AvatarStackComponent.new(attendees: event.attendees,
+                                          modal_id: helpers.generate_attendees_modal_id) %>
+        </div>
+      </div>
+    </a>
+  </div>
+<% end %>
 <% else %>
-  <p class="text-center my-10">No events found.</p>
+  <p class="text-center mt-5">No events found.</p>
 <% end %>
 </div>

@@ -26,17 +26,22 @@
 FactoryBot.define do
   factory :event do
     association :creator, factory: :user
-    title                { Faker::Lorem.word }
+    title                { Faker::Book.title }
     start_date           { Random.rand(3..12).days.from_now }
     description          { Faker::Lorem.paragraph_by_chars * 5 }
-    location             { Faker::Lorem.word }
+    location             { Faker::Address.street_address }
     accommodation        { }
     additional_info      { Faker::Lorem.paragraph_by_chars }
     dress_code           { [ "Formal", "Casual", "Blacktie" ].sample }
     end_date             { start_date + 3.hours }
-    food_situation       { Faker::Lorem.paragraph_by_chars }
+    food_situation       { Faker::Food.ethnic_category }
     is_public            { true }
     max_capacity         { Random.rand(3..10) }
     parking_instructions { Faker::Lorem.paragraph_by_chars }
+  end
+
+  trait :past_event do
+    start_date { 1.week.ago }
+    end_date   { 1.week.ago + 3.hours }
   end
 end
