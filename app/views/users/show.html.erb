@@ -10,28 +10,28 @@
   <div class="">
     <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-styled-tab" data-tabs-toggle="#default-styled-tab-content" data-tabs-active-classes="text-purple-600 hover:text-purple-600 text-purple-500 hover:text-purple-500 border-purple-600 border-purple-500" data-tabs-inactive-classes="border-transparent text-gray-500 hover:text-gray-600 text-gray-400 border-gray-100 hover:border-gray-300 border-gray-700 hover:text-gray-300" role="tablist">
       <li class="me-2" role="presentation">
-        <button class="inline-block p-4 border-b-2 rounded-t-lg" id="upcoming-styled-tab" data-tabs-target="#styled-upcoming" type="button" role="tab" aria-controls="upcoming" aria-selected="false">Upcoming <%= @events.size %></button>
+        <button class="inline-block p-4 border-b-2 rounded-t-lg" id="upcoming-styled-tab" data-tabs-target="#styled-upcoming" type="button" role="tab" aria-controls="upcoming" aria-selected="false">Upcoming <%= @upcoming.size %></button>
       </li>
       <li class="me-2" role="presentation">
-        <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 hover:text-gray-300" id="hosting-styled-tab" data-tabs-target="#styled-hosting" type="button" role="tab" aria-controls="hosting" aria-selected="false">Hosting <%= [].size %></button>
+        <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 hover:text-gray-300" id="hosting-styled-tab" data-tabs-target="#styled-hosting" type="button" role="tab" aria-controls="hosting" aria-selected="false">Hosting <%= @hosting.size %></button>
       </li>
       <li class="me-2" role="presentation">
         <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 hover:text-gray-300" id="attended-styled-tab" data-tabs-target="#styled-attended" type="button" role="tab" aria-controls="attended" aria-selected="false">Attended <%= @attended_events.size %></button>
       </li>
       <li role="presentation">
-        <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 hover:text-gray-300" id="past-events-styled-tab" data-tabs-target="#styled-past-events" type="button" role="tab" aria-controls="past-events" aria-selected="false">All Past Events <%= [].size %></button>
+        <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 hover:text-gray-300" id="past-events-styled-tab" data-tabs-target="#styled-past-events" type="button" role="tab" aria-controls="past-events" aria-selected="false">All Past Events <%= @past_events.size %></button>
       </li>
     </ul>
   </div>
   <div id="default-styled-tab-content">
     <div class="hidden" id="styled-upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
       <div class="flex w-full flex-row flex-wrap justify-evenly items-start">
-        <%= render EventsCardComponent.new(events: @events) %>
+        <%= render EventsCardComponent.new(events: @upcoming) %>
       </div>
     </div>
     <div class="hidden" id="styled-hosting" role="tabpanel" aria-labelledby="hosting-tab">
       <div class="flex w-full flex-row flex-wrap justify-evenly items-start">
-        <%= render EventsCardComponent.new(events: []) %>
+        <%= render EventsCardComponent.new(events: @hosting) %>
       </div>
     </div>
     <div class="hidden" id="styled-attended" role="tabpanel" aria-labelledby="attended-tab">
@@ -41,7 +41,7 @@
     </div>
     <div class="hidden" id="styled-past-events" role="tabpanel" aria-labelledby="past-events-tab">
       <div class="flex w-full flex-row flex-wrap justify-evenly items-start">
-        <%= render EventsCardComponent.new(events: []) %>
+        <%= render EventsCardComponent.new(events: @past_events) %>
       </div>
     </div>
   </div>

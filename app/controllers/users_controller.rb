@@ -9,8 +9,10 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
-    @events = @user.events
-    @attended_events = @user.attended_events
+    @upcoming = @user.upcoming_events
+    @hosting = @user.events.upcoming.order(start_date: :asc)
+    @attended_events = @user.attended_events.past.order(start_date: :desc)
+    @past_events = @user.past_events
   end
 
   # GET /users/new

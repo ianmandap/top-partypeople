@@ -60,4 +60,22 @@ RSpec.describe Event, type: :model do
       end
     end
   end
+
+  describe '.past' do
+    it 'returns events with start_date in the past' do
+      FactoryBot.create_list(:event, 2, :past)
+      FactoryBot.create(:event)
+
+      expect(Event.past.count).to eql(2)
+    end
+  end
+
+  describe '.upcoming' do
+    it 'returns events with start_date that are upcoming' do
+      FactoryBot.create_list(:event, 2, :past)
+      FactoryBot.create(:event)
+
+      expect(Event.upcoming.count).to eql(1)
+    end
+  end
 end

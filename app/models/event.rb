@@ -38,4 +38,7 @@ class Event < ApplicationRecord
   [ :accommodation, :additional_info, :dress_code, :food_situation, :parking_instructions ].each do |attr|
     normalizes attr, with: -> { _1.presence }
   end
+
+  scope :past, -> { where("start_date < ?", Time.current) }
+  scope :upcoming, -> { where("start_date >= ?", Time.current) }
 end

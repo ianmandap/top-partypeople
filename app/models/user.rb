@@ -29,4 +29,18 @@ class User < ApplicationRecord
   def placeholder_initial
     display_name[0]
   end
+
+  def upcoming_events
+    # upcoming hosting events + upcoming attending events
+    Event.upcoming.left_outer_joins(:invites).where("invites.attendee_id = ?", id).
+      or(Event.upcoming.where(creator_id: id)).
+      order(start_date: :asc).distinct
+  end
+
+  def past_events
+    # past hosted events + past attended events
+    Event.past.left_outer_joins(:invites).where("invites.attendee_id = ?", id).
+      or(Event.past.where(creator_id: id)).
+      order(start_date: :desc).distinct
+  end
 end

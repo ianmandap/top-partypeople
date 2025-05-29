@@ -40,8 +40,7 @@ FactoryBot.define do
     parking_instructions { Faker::Lorem.paragraph_by_chars }
   end
 
-  trait :past_event do
+  trait :past do
     start_date { 1.week.ago }
-    end_date   { 1.week.ago + 3.hours }
   end
 end
