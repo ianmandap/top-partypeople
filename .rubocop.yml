@@ -21,3 +21,6 @@ AllCops:
     - 'node_modules/**/*'
     - 'vendor/**/*'
     - "**/*.erb"
+
+Airbnb/SimpleModifierConditional:
+  Enabled: false

@@ -1,2 +1,13 @@
 module EventsHelper
+  def display_user_status_on_event(event:, user:)
+    return "NIL" if event.nil? || user.nil?
+
+    if event.creator_id == user.id
+      event.past? ? "👑 HOSTED" : "👑 HOSTING"
+    else
+      # Not hosting event ergo attended the event
+      event.past? ? "👍 WENT" : "👍 WILL GO"
+    end
+    # "😢 DID NOT GO"
+  end
 end

@@ -12,6 +12,12 @@
             bg-brandwhite text-brandblack text-sm font-bold me-2 px-2.5 py-0.5 rounded-full">
           <%= helpers.formatted_date_and_time(event.start_date) %>
         </span>
+        <% if @user.present? %>
+          <span class="absolute bottom-0 right-0 
+            text-brandwhite bg-brandblack text-sm font-bold p-3">
+            <%= helpers.display_user_status_on_event(event: event, user: @user) %>
+          </span>
+        <% end %>
       </div>
       <div class="mt-2">
         <h5 class="text-xl font-semibold tracking-tight"><%= event.title %></h5>

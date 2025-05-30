@@ -41,4 +41,10 @@ class Event < ApplicationRecord
 
   scope :past, -> { where("start_date < ?", Time.current) }
   scope :upcoming, -> { where("start_date >= ?", Time.current) }
+  scope :is_private, -> { where(is_public: false) }
+  scope :is_public, -> { where(is_public: true) }
+
+  def past?
+    start_date < Time.current
+  end
 end

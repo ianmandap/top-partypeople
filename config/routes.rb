@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root "pages#home"
   get "/about", to: "pages#about"
 
-  resources :users
+  resources :users, except: [ :index ]
   resources :events
   resource :session
   resources :passwords, param: :token

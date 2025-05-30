@@ -4,7 +4,11 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
   <% end %>
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl"><%= @user.display_name %>'s Profile</h1>
+    <% if params[:id] == Current.user.id.to_s %>
+      <h1 class="font-bold text-4xl">Welcome back, <%= Current.user.display_name %>!</h1>
+    <% else %>
+      <h1 class="font-bold text-4xl"><%= @user.display_name %>'s Profile</h1>
+    <% end %>
     <%= render CreateEventBtnComponent.new %>
   </div>
   <div class="">
@@ -26,22 +30,22 @@
   <div id="default-styled-tab-content">
     <div class="hidden" id="styled-upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
       <div class="flex w-full flex-row flex-wrap justify-evenly items-start">
-        <%= render EventsCardComponent.new(events: @upcoming) %>
+        <%= render EventsCardComponent.new(events: @upcoming, user: @user) %>
       </div>
     </div>
     <div class="hidden" id="styled-hosting" role="tabpanel" aria-labelledby="hosting-tab">
       <div class="flex w-full flex-row flex-wrap justify-evenly items-start">
-        <%= render EventsCardComponent.new(events: @hosting) %>
+        <%= render EventsCardComponent.new(events: @hosting, user: @user) %>
       </div>
     </div>
     <div class="hidden" id="styled-attended" role="tabpanel" aria-labelledby="attended-tab">
       <div class="flex w-full flex-row flex-wrap justify-evenly items-start">
-        <%= render EventsCardComponent.new(events: @attended_events) %>
+        <%= render EventsCardComponent.new(events: @attended_events, user: @user) %>
       </div>
     </div>
     <div class="hidden" id="styled-past-events" role="tabpanel" aria-labelledby="past-events-tab">
       <div class="flex w-full flex-row flex-wrap justify-evenly items-start">
-        <%= render EventsCardComponent.new(events: @past_events) %>
+        <%= render EventsCardComponent.new(events: @past_events, user: @user) %>
       </div>
     </div>
   </div>
