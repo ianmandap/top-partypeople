@@ -4,11 +4,11 @@ module ApplicationHelper
   end
 
   def formatted_date(date)
-    date.strftime("%A, %B %d, %Y")
+    date.strftime("%A, %b %d")
   end
 
   def formatted_time(date)
-    date.strftime("%I:%M %p")
+    date.strftime("%-I:%M %p")
   end
 
   def formatted_date_and_time(date)

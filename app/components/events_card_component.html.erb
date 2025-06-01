@@ -6,7 +6,7 @@
                  hover:bg-brandlightgray">
         <a href=<%= event_path(id: event.id) %>>
           <div class="relative">
-            <%= image_tag 'kelsey-chance-tAH2cA_BL5g-unsplash.jpg', 
+            <%= image_tag "posters/#{event.cover_image}", 
               class: "h-auto w-65 sm:w-full aspect-square object-cover", alt: "party image" %>
             <span class="absolute top-[8px] left-[8px] 
             bg-brandwhite text-brandblack text-sm font-bold me-2 px-2.5 py-0.5 rounded-full">
