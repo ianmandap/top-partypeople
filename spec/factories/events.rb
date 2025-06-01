@@ -5,6 +5,7 @@
 #  id                   :bigint           not null, primary key
 #  accommodation        :string
 #  additional_info      :string
+#  cover_image          :string
 #  description          :text
 #  dress_code           :string
 #  end_date             :datetime
@@ -27,20 +28,30 @@ FactoryBot.define do
   factory :event do
     association :creator, factory: :user
     title                { Faker::Book.title }
+    cover_image          { (Dir.entries(Rails.root.join('app/assets/images/posters')) - [ '.', '..' ]).sample }
     start_date           { Random.rand(3..12).days.from_now }
-    description          { Faker::Lorem.paragraph_by_chars * 5 }
+    description          { Faker::Lorem.paragraphs(number: rand(10..20)).join("\n") }
     location             { Faker::Address.street_address }
-    accommodation        { }
+    accommodation        { Faker::Lorem.paragraph }
     additional_info      { Faker::Lorem.paragraph_by_chars }
     dress_code           { [ "Formal", "Casual", "Blacktie" ].sample }
     end_date             { start_date + 3.hours }
     food_situation       { Faker::Food.ethnic_category }
     is_public            { true }
     max_capacity         { Random.rand(3..10) }
-    parking_instructions { Faker::Lorem.paragraph_by_chars }
+    parking_instructions { Faker::Lorem.paragraph }
   end
 
   trait :past do
     start_date { 1.week.ago }
+  end
+
+  trait :no_optional_fields do
+    accommodation        { }
+    additional_info      { }
+    dress_code           { }
+    end_date             { }
+    food_situation       { }
+    parking_instructions { }
   end
 end

@@ -1,13 +1,109 @@
-<% content_for :title, "Showing event" %>
-<div class="md:w-2/3 w-full">
+<% content_for :title, "#{@event.title} | Party People" %>
+<div class="w-full text-lg">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
   <% end %>
-  <h1 class="font-bold text-4xl">Event Details</h1>
-  <%= render @event %>
-  <% if authenticated? %>
-    <%= link_to "Edit this event", edit_event_path(@event), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-    <%= link_to "Back to events", events_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-    <%= button_to "Destroy this event", @event, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "w-full rounded-md px-3.5 py-2.5 text-brandwhite bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
-  <% end %>
+  <div class="flex flex-col p-0 md:pr-[50%]">
+    <h1 class="font-bold text-6xl font-work-sans my-5 self-center md:self-start"><%= @event.title %></h1>
+    <div class="w-105 h-105 mb-5 md:w-1/3 self-center md:self-auto md:fixed md:right-1/12 md:top-1/6">
+      <%= image_tag "posters/#{@event.cover_image}", alt: "party image", class: "object-contain"  %>
+    </div>
+    <div class="text-3xl font-black mt-5"><%= formatted_date(@event.start_date) %></div>
+    <div class="text-xl text-branddarkgray brightness-70 mb-5"><%= formatted_time(@event.start_date) %></div>
+    <div class="flex items-center justify-start mb-4">
+      <div class="w-auto h-auto m-1 mr-3">
+        <%= icon 'crown', library: "boxicons", data: { "tooltip-target": "tooltip-default" } %>
+      </div>
+      <span class="">Hosted by</span>
+      <span class='ml-1.5'>
+        <%= render AvatarPlaceholderComponent.new(placeholder_initial: @event.creator.placeholder_initial) %>
+      </span>
+      <span class="ml-1.5"><%= @event.creator.display_name %></span>
+    </div>
+    <div class="flex flex-row mb-2">
+      <div class="w-auto h-auto m-1 mr-3">
+        <%= icon 'pin', library: "boxicons", data: { "tooltip-target": "tooltip-location" } %>
+        <div id="tooltip-location" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0">
+          Location
+          <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+      </div>
+      <%= @event.location %>
+    </div>
+    <div class="flex flex-row mb-2">
+      <div class="w-auto h-auto m-1 mr-3">
+        <%= icon 'user-circle', library: "boxicons", data: { "tooltip-target": "tooltip-max-capacity" } %>
+        <div id="tooltip-max-capacity" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0">
+          Max Capacity
+          <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+      </div>
+      <div class=""><%= [1].size %>/<%= @event.max_capacity %> guests are going</div>
+    </div>
+    <% if @event.food_situation.present? %>
+      <div class="flex flex-row mb-2">
+        <div class="w-auto h-auto m-1 mr-3">
+          <%= icon 'fork-knife', library: "boxicons", data: { "tooltip-target": "tooltip-food-situation" } %>
+          <div id="tooltip-food-situation" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0">
+            Food Situation
+            <div class="tooltip-arrow" data-popper-arrow></div>
+          </div>
+        </div>
+        <div class=""><%= @event.food_situation %></div>
+      </div>
+    <% end %>
+    <% if @event.dress_code.present? %>
+      <div class="flex flex-row mb-2">
+        <div class="w-auto h-auto m-1 mr-3">
+          <%= icon 'dress', library: "boxicons", data: { "tooltip-target": "tooltip-dress-code" } %>
+          <div id="tooltip-dress-code" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0">
+            Dress Code
+            <div class="tooltip-arrow" data-popper-arrow></div>
+          </div>
+        </div>
+        <div class=""><%= @event.dress_code %></div>
+      </div>
+    <% end %>
+    <% if @event.accommodation.present? %>
+      <div class="flex flex-row mb-2">
+        <div class="w-auto h-auto m-1 mr-3">
+          <%= icon 'building-house', library: "boxicons", data: { "tooltip-target": "tooltip-accommodation" } %>
+          <div id="tooltip-accommodation" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0">
+            Accommodation
+            <div class="tooltip-arrow" data-popper-arrow></div>
+          </div>
+        </div>
+        <div class=""><%= @event.accommodation %></div>
+      </div>
+    <% end %>
+    <% if @event.parking_instructions.present? %>
+      <div class="flex flex-row mb-2">
+        <div class="w-auto h-auto m-1 mr-3">
+          <%= icon 'car', library: "boxicons", data: { "tooltip-target": "tooltip-parking-instructions" } %>
+          <div id="tooltip-parking-instructions" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0">
+            Parking Instructions
+            <div class="tooltip-arrow" data-popper-arrow></div>
+          </div>
+        </div>
+        <div class=""><%= @event.parking_instructions %></div>
+      </div>
+    <% end %>
+    <% if @event.additional_info %>
+      <div class="flex flex-row mb-2">
+        <div class="w-auto h-auto m-1 mr-3">
+          <%= icon 'info-circle', library: "boxicons", data: { "tooltip-target": "tooltip-additional-info" } %>
+          <div id="tooltip-additional-info" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0">
+            Additional Info
+            <div class="tooltip-arrow" data-popper-arrow></div>
+          </div>
+        </div>
+        <div class=""><%= @event.additional_info %></div>
+      </div>
+    <% end %>
+    <div class="mt-10 mb-5"><%= @event.description %></div>
+  </div>
+  <%# if authenticated? %>
+  <%#= link_to "Edit Event", edit_event_path(@event), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+  <%#= button_to "Delete Event", @event, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "w-full rounded-md px-3.5 py-2.5 text-brandwhite bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
+  <%# end %>
 </div>

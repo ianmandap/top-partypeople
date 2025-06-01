@@ -17,6 +17,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_16_182832) do
   create_table "events", force: :cascade do |t|
     t.bigint "creator_id"
     t.string "title"
+    t.string "cover_image"
     t.datetime "start_date"
     t.datetime "end_date"
     t.string "location"

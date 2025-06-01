@@ -1,0 +1,26 @@
+<footer class="bg-transparent backdrop-blur-lg mt-5">
+  <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+    <div class="sm:flex sm:items-center sm:justify-between">
+      <%= link_to new_event_path, class: "flex items-center space-x-3 rtl:space-x-reverse" do%>
+        <span class="self-center text-md font-work-sans text-gray-400 text-brandblack contrast-0
+                  hover:bg-linear-to-r hover:text-transparent hover:bg-clip-text hover:from-purplerain hover:to-pinkrain">
+          Plan a party now!</span>
+        <%= image_tag 'favicon/favicon.svg', class: "w-8 h-8" %>
+      <% end %>
+      <ul class="flex flex-wrap items-center mb-6 text-sm font-medium sm:mb-0 text-gray-400">
+        <li>
+          <a href="#" class="hover:underline me-4 md:me-6">About</a>
+        </li>
+        <li>
+          <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+        </li>
+        <li>
+          <a href="#" class="hover:underline">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>

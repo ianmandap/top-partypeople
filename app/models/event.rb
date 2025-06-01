@@ -5,6 +5,7 @@
 #  id                   :bigint           not null, primary key
 #  accommodation        :string
 #  additional_info      :string
+#  cover_image          :string
 #  description          :text
 #  dress_code           :string
 #  end_date             :datetime
