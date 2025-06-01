@@ -1,4 +1,8 @@
 module EventsHelper
+  def hosting?(event:)
+    event.creator.id == Current.user.id
+  end
+
   def display_user_status_on_event(event:, user:)
     return "NIL" if event.nil? || user.nil?
 
