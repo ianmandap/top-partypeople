@@ -12,6 +12,9 @@
   --color-purplerain: #CDB4DB;
   --color-pinkrain: #FFAFCC;
   --color-bluerain: #A2D2FF;
+  --color-purplerain-hr: #EFF5EB;
+  --color-pinkrain-hr: #EBFFF8;
+  --color-bluerain-hr: #FFF3E8;
   --color-purplerain-75: #F2ECF6;
   --color-pinkrain-75: #FFEBF2;
   --color-bluerain-75: #E8F4FF;
@@ -20,6 +23,7 @@
   --color-branddarkgray: #939393;
   --color-brandlightgray: #f2f2f2;
   --color-activelink: #1d4ed8;
+  --color-wysiwyg: hsla(0, 0%, 100%, .25);
   --font-work-sans: "Work Sans", sans-serif;
   --font-poetsen-one: "Poetsen One", sans-serif;
   --font-questrial: "Questrial", sans-serif;

@@ -11,11 +11,19 @@ module ApplicationHelper
     date.strftime("%-I:%M %p")
   end
 
-  def formatted_date_and_time(date)
+  def formatted_date_and_time_short(date)
     if date.strftime("%M") == "00"
       date.strftime("%a %-m/%-d · %l%P")
     else
       date.strftime("%a %-m/%-d · %l:%M%P")
+    end
+  end
+
+  def formatted_date_and_time_long(date)
+    if date.strftime("%M") == "00"
+      date.strftime("%a, %b %-d · %l%P")
+    else
+      date.strftime("%a, %b %-d · %l:%M%P")
     end
   end
 end

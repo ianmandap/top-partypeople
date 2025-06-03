@@ -1,0 +1,9 @@
+<% content_for :head do %>
+  <meta name="turbo-visit-control" content="reload">
+<% end %>
+<%= stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/vanilla-calendar-pro@3.0.4/styles/index.min.css' %>
+<%= javascript_include_tag 'datetimepicker.js', type: :module, defer: true %>
+<input id="calendar-input" 
+  class="bg-white w-full font-3xl font-black <%= helpers.formBarColors %>" 
+  placeholder="Start Date" 
+  value="<%= @event.start_date? ? helpers.formatted_date_and_time_long(@event.start_date) : nil %>">

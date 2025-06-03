@@ -1,6 +1,6 @@
 module EventsHelper
   def hosting?(event:)
-    event.creator.id == Current.user.id
+    event.creator&.id == Current.user.id
   end
 
   def display_user_status_on_event(event:, user:)
@@ -13,5 +13,9 @@ module EventsHelper
       event.past? ? "👍 WENT" : "👍 WILL GO"
     end
     # "😢 DID NOT GO"
+  end
+
+  def array_of_cover_images
+    Dir.entries(Rails.root.join("app/assets/images/posters")) - [ ".", ".." ]
   end
 end

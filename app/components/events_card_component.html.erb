@@ -10,7 +10,7 @@
               class: "h-auto w-65 sm:w-full aspect-square object-cover", alt: "party image" %>
             <span class="absolute top-[8px] left-[8px] 
             bg-brandwhite text-brandblack text-sm font-bold me-2 px-2.5 py-0.5 rounded-full">
-          <%= helpers.formatted_date_and_time(event.start_date) %>
+          <%= helpers.formatted_date_and_time_short(event.start_date) %>
         </span>
         <% if @user.present? %>
           <span class="absolute bottom-0 right-0 
