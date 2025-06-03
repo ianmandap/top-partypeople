@@ -19,9 +19,9 @@
     <%= javascript_importmap_tags %>
   </head>
   <body 
-    class="bg-linear-to-r from-purplerain-75 via-pinkrain-75 to-bluerain-75 text-brandblack font-questrial">
+    class="min-h-screen flex flex-col bg-linear-to-r from-purplerain-75 via-pinkrain-75 to-bluerain-75 text-brandblack font-questrial">
     <%= render NavBarComponent.new() %>
-    <main class="container mx-auto mt-24 px-5 flex">
+    <main class="grow container mx-auto mt-24 px-5 flex">
       <%= yield %>
     </main>
     <%= render FooterComponent.new %>
