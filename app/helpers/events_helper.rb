@@ -19,11 +19,17 @@ module EventsHelper
     Dir.entries(Rails.root.join("app/assets/images/posters")) - [ ".", ".." ]
   end
 
+  def on_new_event_path?
+    request.path == new_event_path
+  end
+
   def on_event_path?
+    return false if params[:id].nil?
     request.path == event_path
   end
 
   def on_edit_event_path?
+    return false if params[:id].nil?
     request.path == edit_event_path
   end
 end

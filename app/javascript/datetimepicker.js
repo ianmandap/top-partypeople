@@ -1,7 +1,11 @@
 import { Calendar } from 'vanilla-calendar-pro';
 
+const startDateInput = document.getElementById('calendar-input');
+
 const dateFormatOptions = { weekday: 'short', month: 'short', day: 'numeric' }
 const options = {
+  selectedTime: startDateInput.dataset.time, // 'hh:mm aa'
+  selectedDates: [startDateInput.dataset.date], // ['YYYY-MM-DD'] 
   dateMin: 'today',
   selectedTheme: 'light',
   inputMode: true,

@@ -1,23 +1,27 @@
 <!-- Show Sidebar when
 1. authenticated && hosting && event_path (#show) -> Edit and Delete Buttons
 2. authenticated && hosting && edit_event_path -> Submit (PUT)
-3. unauthenticated && new_event_path -> Submit (POST)
+3. unauthenticated || authenticated && new_event_path -> Submit (POST)
 -->
 <aside id="sidebar-footer" 
-    class="fixed md:top-2/5 md:right-0 md:bottom-auto md:left-auto md:w-27 md:h-1/4 z-1 
-     left-1/3 bottom-0 h-1/12 sm:translate-x-0 w-full" 
+    class="fixed md:top-3/7 md:right-0 md:bottom-auto md:left-auto md:w-27 md:h-1/4 z-1 
+            bottom-0 left-0 w-[inherit]" 
     aria-label="Sidebar">
-  <ul class="flex flex-row md:block">
-    <% if helpers.authenticated? %>
+  <ul class="flex flex-row md:block w-full">
+    <% if helpers.on_new_event_path? %>
+      <%= button_tag :submit, class: "w-full bg-gray-200 hover:brightness-80 p-5 md:px-3 md:py-5 flex flex-col justify-center items-center cursor-pointer" do %>
+        Create <%= icon 'arrow-out-right-square-half', library: "boxicons", class: '' %>
+      <% end %>
+    <% elsif helpers.authenticated? %>
       <% if Pundit.policy(Current.user, @event).edit? && helpers.on_event_path? %>
         <%= link_to edit_event_path(@event), 
-            class: "" do %>
+            class: "block w-full" do %>
           <li class="w-full bg-gray-200 hover:brightness-80 flex align-center p-5 md:px-3 md:py-5">
             <%= icon 'pencil', library: "boxicons" %>
             <span class="flex-1 ml-2 whitespace-nowrap">Edit</span>
           </li>
         <% end %>
-        <%= link_to @event, data: { turbo_confirm: "Are you sure you want to delete this event?", turbo_method: :delete } do %>
+        <%= link_to @event, class: "block w-full", data: { turbo_confirm: "Are you sure you want to delete this event?", turbo_method: :delete } do %>
           <li class="w-full text-white bg-red-500 hover:brightness-80 flex align-center
                     p-5 md:px-3 md:py-5">
             <%= icon 'x', library: "boxicons" %>
@@ -25,21 +29,10 @@
           </li>
         <% end %>
       <% elsif Pundit.policy(Current.user, @event).update? && helpers.on_edit_event_path? %>
-        <%= @form.submit class: "" do %>
-          <li class="w-full bg-gray-200 hover:brightness-80 flex align-center p-5 md:px-3 md:py-5">
-            <%= icon 'pencil', library: "boxicons" %>
-            <span class="flex-1 ml-2 whitespace-nowrap">Submit</span>
-          </li>
+        <%= button_tag :submit, class: "w-full bg-gray-200 hover:brightness-80 p-5 md:px-3 md:py-5 flex flex-col justify-center items-center cursor-pointer" do %>
+          Update <%= icon 'arrow-out-right-square-half', library: "boxicons", class: '' %>
         <% end %>
-      <% end %>
-    <% else %>
-      <%= @form.submit "Create", class: "" do %>
-        <li class="w-full bg-gray-200 hover:brightness-80 flex align-center p-5 md:px-3 md:py-5">
-          <%= icon 'pencil', library: "boxicons" %>
-          <span class="flex-1 ml-2 whitespace-nowrap">Submit</span>
-        </li>
       <% end %>
     <% end %>
   </ul>
 </aside>
-<%#= console.log(11111111) %>

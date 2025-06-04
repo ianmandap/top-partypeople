@@ -3,7 +3,9 @@
 <% end %>
 <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/vanilla-calendar-pro@3.0.4/styles/index.min.css' %>
 <%= javascript_include_tag 'datetimepicker.js', type: :module, defer: true %>
-<input id="calendar-input" 
+<input id="calendar-input" name="<%= @name %>"
   class="bg-white w-full font-3xl font-black <%= helpers.formBarColors %>" 
   placeholder="Start Date" 
-  value="<%= @event.start_date? ? helpers.formatted_date_and_time_long(@event.start_date) : nil %>">
+  value="<%= @event.start_date? ? helpers.formatted_date_and_time_long(@event.start_date) : nil %>"
+  data-date="<%= @event.start_date? ? helpers.formatted_date_iso(@event.start_date) : nil %>"
+  data-time="<%= @event.start_date? ? helpers.formatted_time_long(@event.start_date) : nil %>">

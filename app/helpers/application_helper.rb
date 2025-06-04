@@ -3,12 +3,20 @@ module ApplicationHelper
     request.path == path
   end
 
+  def formatted_date_iso(date)
+    date.strftime("%F")
+  end
+
   def formatted_date(date)
     date.strftime("%A, %b %d")
   end
 
   def formatted_time(date)
     date.strftime("%-I:%M %p")
+  end
+
+  def formatted_time_long(date)
+    date.strftime("%I:%M %p")
   end
 
   def formatted_date_and_time_short(date)
