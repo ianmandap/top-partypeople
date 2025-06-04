@@ -18,4 +18,12 @@ module EventsHelper
   def array_of_cover_images
     Dir.entries(Rails.root.join("app/assets/images/posters")) - [ ".", ".." ]
   end
+
+  def on_event_path?
+    request.path == event_path
+  end
+
+  def on_edit_event_path?
+    request.path == edit_event_path
+  end
 end

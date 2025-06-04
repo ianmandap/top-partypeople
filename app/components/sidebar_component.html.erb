@@ -1,14 +1,18 @@
-<% if helpers.authenticated? && helpers.hosting?(event: @event) %>
-  <aside id="sidebar-footer" 
+<!-- Show Sidebar when
+1. authenticated && hosting && event_path (#show) -> Edit and Delete Buttons
+2. authenticated && hosting && edit_event_path -> Submit (PUT)
+3. unauthenticated && new_event_path -> Submit (POST)
+-->
+<aside id="sidebar-footer" 
     class="fixed md:top-2/5 md:right-0 md:bottom-auto md:left-auto md:w-27 md:h-1/4 z-1 
-     left-1/3 bottom-0 h-1/12 sm:translate-x-0" 
+     left-1/3 bottom-0 h-1/12 sm:translate-x-0 w-full" 
     aria-label="Sidebar">
-    <div class="">
-      <ul class="flex flex-row md:block">
+  <ul class="flex flex-row md:block">
+    <% if helpers.authenticated? %>
+      <% if Pundit.policy(Current.user, @event).edit? && helpers.on_event_path? %>
         <%= link_to edit_event_path(@event), 
             class: "" do %>
-          <li class="w-full bg-gray-200 hover:brightness-80 flex align-center
-                    p-5 md:px-3 md:py-5">
+          <li class="w-full bg-gray-200 hover:brightness-80 flex align-center p-5 md:px-3 md:py-5">
             <%= icon 'pencil', library: "boxicons" %>
             <span class="flex-1 ml-2 whitespace-nowrap">Edit</span>
           </li>
@@ -20,8 +24,22 @@
             <span class="flex-1 ml-2 whitespace-nowrap">Delete</span>
           </li>
         <% end %>
-      </ul>
-    </div>
-  </aside>
-<% end %>
-<%#= button_to "Delete Event", @event, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "w-full rounded-md px-3.5 py-2.5 text-brandwhite bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
+      <% elsif Pundit.policy(Current.user, @event).update? && helpers.on_edit_event_path? %>
+        <%= @form.submit class: "" do %>
+          <li class="w-full bg-gray-200 hover:brightness-80 flex align-center p-5 md:px-3 md:py-5">
+            <%= icon 'pencil', library: "boxicons" %>
+            <span class="flex-1 ml-2 whitespace-nowrap">Submit</span>
+          </li>
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= @form.submit "Create", class: "" do %>
+        <li class="w-full bg-gray-200 hover:brightness-80 flex align-center p-5 md:px-3 md:py-5">
+          <%= icon 'pencil', library: "boxicons" %>
+          <span class="flex-1 ml-2 whitespace-nowrap">Submit</span>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</aside>
+<%#= console.log(11111111) %>

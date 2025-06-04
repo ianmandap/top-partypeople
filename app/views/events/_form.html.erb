@@ -9,16 +9,13 @@
       </ul>
     </div>
   <% end %>
-  <% if alert = flash[:alert] %>
-    <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
-  <% end %>
-  <% if notice = flash[:notice] %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% if flash.present? %>
+    <%= render AlertComponent.new(flash: flash) %>
   <% end %>
   <div class="w-full text-lg">
     <div class="flex flex-col p-0 md:pr-[50%]">
       <div class="relative w-full">
-        <%= form.text_field :title, id: "event-title", required: true, placeholder: " ",
+        <%= form.text_field :title, id: "event-title", required: true, placeholder: " ", maxlength: 40,
           class: "font-bold text-6xl font-work-sans my-5 self-center md:self-start w-full #{formBarColors} peer" %>
         <label for="event-title" class="absolute text-6xl <%= floatingLabelBig %>">Event Title</label>
       </div>
@@ -48,7 +45,7 @@
           </div>
         </div>
         <div class="relative w-full">
-          <%= form.text_field :location, id:"event-location", required: true, placeholder: " ", class: "#{formBarColors} peer" %>
+          <%= form.text_field :location, id:"event-location", required: true, placeholder: " ", maxlength: 40, class: "#{formBarColors} peer" %>
           <label for="event-location" class="absolute <%= floatingLabelSmall %>">Location</label>
         </div>
       </div>
@@ -62,7 +59,7 @@
         </div>
         <div class="relative w-full">
           <%= form.number_field :max_capacity, id: "event-max-capacity", required: true, placeholder: "", class: "#{formBarColors} peer",
-              min: 1, type: "number" %>
+              min: 1, max: 1_000, type: "number" %>
           <label for="event-max-capacity" class="absolute <%= floatingLabelSmall %>">Max Capacity</label>
         </div>
       </div>
@@ -75,7 +72,7 @@
           </div>
         </div>
         <div class="relative w-full">
-          <%= form.text_field :food_situation, id: "event-food-situation", required: true, placeholder: " ", class: "#{formBarColors} peer" %>
+          <%= form.text_field :food_situation, id: "event-food-situation", required: true, placeholder: " ", maxlength: 40, class: "#{formBarColors} peer" %>
           <label for="event-food-situation" class="absolute <%= floatingLabelSmall %>">Food Situation (Optional)</label>
         </div>
       </div>
@@ -88,7 +85,7 @@
           </div>
         </div>
         <div class="relative w-full">
-          <%= form.text_field :dress_code, id: "event-dress-code", required: true, placeholder: " ", class: "#{formBarColors} peer" %>
+          <%= form.text_field :dress_code, id: "event-dress-code", required: true, placeholder: " ", maxlength: 40, class: "#{formBarColors} peer" %>
           <label for="event-dress-code" class="absolute <%= floatingLabelSmall %>">Dress Code (Optional)</label>
         </div>
       </div>
@@ -101,7 +98,7 @@
           </div>
         </div>
         <div class="relative w-full">
-          <%= form.text_field :accommodation, id:"event-accommodation", required: true, placeholder: " ", class: "#{formBarColors} peer" %>
+          <%= form.text_field :accommodation, id:"event-accommodation", required: true, placeholder: " ", maxlength: 40, class: "#{formBarColors} peer" %>
           <label for="event-accommodation" class="absolute <%= floatingLabelSmall %>">Accommodation (Optional)</label>
         </div>
       </div>
@@ -114,7 +111,7 @@
           </div>
         </div>
         <div class="relative w-full">
-          <%= form.text_field :parking_instructions, id: "event-parking-instructions", required: true, placeholder: " ", class: "#{formBarColors} peer" %>
+          <%= form.text_field :parking_instructions, id: "event-parking-instructions", required: true, maxlength: 100, placeholder: " ", class: "#{formBarColors} peer" %>
           <label for="event-parking-instructions" class="absolute <%= floatingLabelSmall %>">Parking Instructions (Optional)</label>
         </div>
       </div>
@@ -127,7 +124,7 @@
           </div>
         </div>
         <div class="relative w-full">
-          <%= form.text_field :additional_info, id: "event-additional-info", required: true, placeholder: " ", class: "#{formBarColors} peer" %>
+          <%= form.text_area :additional_info, id: "event-additional-info", required: true, placeholder: " ", maxlength: 150, class: "#{formBarColors} peer" %>
           <label for="event-additional-info" class="absolute <%= floatingLabelSmall %>">Additional Info (Optional)</label>
         </div>
       </div>
@@ -143,7 +140,7 @@
           Description</label>
       </div>
     </div>
-    <%= render SidebarComponent.new(event: @event) %>
+    <%= render SidebarComponent.new(event: @event, form: form) %>
   </div>
 <% end %>
 <%= javascript_include_tag 'events.js' %>

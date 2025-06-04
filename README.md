@@ -18,4 +18,3 @@ Photo by <a href="https://unsplash.com/@kunalptll?utm_content=creditCopyText&utm
 Photo by <a href="https://unsplash.com/@tangerinenewt?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Tangerine Newt</a> on <a href="https://unsplash.com/photos/a-piece-of-fruit-falling-off-of-a-fork-YJFQyhV1lgc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 
 Photo by <a href="https://unsplash.com/@eyestetix?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Eyestetix Studio</a> on <a href="https://unsplash.com/photos/a-cemetery-with-carved-pumpkins-and-a-tombstone-v19TE5Vy3qc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-      
