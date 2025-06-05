@@ -3,7 +3,7 @@
 # Table name: invites
 #
 #  id          :bigint           not null, primary key
-#  is_invited  :boolean          default(FALSE), not null
+#  is_approved :boolean          default(FALSE), not null
 #  status      :integer          default("pending")
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -20,6 +20,8 @@ class Invite < ApplicationRecord
   belongs_to :event, class_name: "Event"
   has_one :creator, through: :event, foreign_key: "creator_id"
 
+  validate :attendee_cannot_be_creator
+
   enum :status, {
     pending: 0,
     attending: 1,
@@ -27,4 +29,10 @@ class Invite < ApplicationRecord
     declined: 3,
     waitlist: 4,
   }
+
+  def attendee_cannot_be_creator
+    if creator == attendee
+      errors.add(:attendee, "is not valid. Event host cannot be an attendee")
+    end
+  end
 end

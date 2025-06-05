@@ -3,7 +3,7 @@
 # Table name: invites
 #
 #  id          :bigint           not null, primary key
-#  is_invited  :boolean          default(FALSE), not null
+#  is_approved :boolean          default(FALSE), not null
 #  status      :integer          default("pending")
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

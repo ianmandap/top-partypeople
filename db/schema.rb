@@ -38,7 +38,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_16_182832) do
     t.bigint "attendee_id"
     t.bigint "event_id"
     t.integer "status", default: 0
-    t.boolean "is_invited", default: false, null: false
+    t.boolean "is_approved", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["attendee_id"], name: "index_invites_on_attendee_id"

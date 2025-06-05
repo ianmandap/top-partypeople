@@ -19,12 +19,14 @@
           class: "resize-none font-bold text-6xl font-work-sans my-5 self-center md:self-start w-full #{formBarColors} peer" %>
         <label for="event-title" class="absolute text-6xl <%= floatingLabelBig %>">Event Title</label>
       </div>
-      <div class="w-105 h-105 mr-5 mb-5 md:w-1/3 self-center md:self-auto md:fixed md:right-1/12 md:top-1/6">
+      <div class="md:max-w-[440px] w-full h-auto self-center flex flex-col items-center
+                mb-5 md:fixed md:mr-5 md:w-1/3 md:self-auto md:right-1/9 md:top-1/6">
         <%= form.select :display_poster, array_of_display_posters, 
             {selected: @event.display_poster || array_of_display_posters[0], prompt: ''}, 
-            {id: "event-display-poster", class: "#{formBarColors} mb-3 peer", required: true} %>
+            {id: "event-display-poster", class: "#{formBarColors} mb-3 peer", required: true, size: 8} %>
         <label for="event-display-poster" class="absolute <%= floatingLabelSmall %>">Display Poster</label>
-        <%= image_tag "/posters/#{@event.display_poster || array_of_display_posters[0]}", id: "preview-display-poster" %>
+        <%= image_tag "/posters/#{@event.display_poster || array_of_display_posters[0]}", id: "preview-display-poster",
+          class: "aspect-square object-contain w-full h-full max-w-[400px] md:max-w-[450px]" %>
       </div>
       <div class="flex flex-row mb-2">
         <%= render DateTimePickerComponent.new(event: @event, name:"event[start_date]") %>

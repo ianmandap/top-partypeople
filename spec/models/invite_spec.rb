@@ -3,7 +3,7 @@
 # Table name: invites
 #
 #  id          :bigint           not null, primary key
-#  is_invited  :boolean          default(FALSE), not null
+#  is_approved :boolean          default(FALSE), not null
 #  status      :integer          default("pending")
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -33,6 +33,17 @@ RSpec.describe Invite, type: :model do
       is_expected.to define_enum_for(:status).
                      with_values([ :pending, :attending, :maybe, :declined, :waitlist ]).
                      backed_by_column_of_type(:integer)
+    end
+
+    it "is expected that event host cannot be an attendee" do
+      user = FactoryBot.create(:user)
+      event = FactoryBot.create(:event, creator: user)
+
+      subject.event = event
+      subject.attendee = user
+
+      expect(subject.valid?).to eq(false)
+      expect(subject.errors[:attendee][0]).to eq("is not valid. Event host cannot be an attendee")
     end
   end
 end
