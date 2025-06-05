@@ -4,7 +4,7 @@ class CreateEvents < ActiveRecord::Migration[8.0]
       t.bigint :creator_id, index: true
 
       t.string :title
-      t.string :cover_image
+      t.string :display_poster
       t.datetime :start_date
       t.datetime :end_date
       t.string :location

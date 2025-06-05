@@ -15,13 +15,16 @@
   <div class="w-full text-lg">
     <div class="flex flex-col p-0 md:pr-[50%]">
       <div class="relative w-full">
-        <%= form.text_field :title, id: "event-title", required: true, placeholder: " ", maxlength: 40,
-          class: "font-bold text-6xl font-work-sans my-5 self-center md:self-start w-full #{formBarColors} peer" %>
+        <%= form.text_area :title, rows: 1, id: "event-title", required: true, placeholder: " ", maxlength: 40,
+          class: "resize-none font-bold text-6xl font-work-sans my-5 self-center md:self-start w-full #{formBarColors} peer" %>
         <label for="event-title" class="absolute text-6xl <%= floatingLabelBig %>">Event Title</label>
       </div>
       <div class="w-105 h-105 mr-5 mb-5 md:w-1/3 self-center md:self-auto md:fixed md:right-1/12 md:top-1/6">
-        <%= form.select :cover_image, array_of_cover_images, selected: @event.cover_image || array_of_cover_images[0], required: true, include_hidden: false %>
-        <%= image_tag "posters/#{@event.cover_image || array_of_cover_images[0]}", id: "cover_image_preview" %>
+        <%= form.select :display_poster, array_of_display_posters, 
+            {selected: @event.display_poster || array_of_display_posters[0], prompt: ''}, 
+            {id: "event-display-poster", class: "#{formBarColors} mb-3 peer", required: true} %>
+        <label for="event-display-poster" class="absolute <%= floatingLabelSmall %>">Display Poster</label>
+        <%= image_tag "/posters/#{@event.display_poster || array_of_display_posters[0]}", id: "preview-display-poster" %>
       </div>
       <div class="flex flex-row mb-2">
         <%= render DateTimePickerComponent.new(event: @event, name:"event[start_date]") %>
@@ -98,7 +101,7 @@
           </div>
         </div>
         <div class="relative w-full">
-          <%= form.text_field :accommodation, id:"event-accommodation", required: false, placeholder: " ", maxlength: 40, class: "#{formBarColors} peer" %>
+          <%= form.text_area :accommodation, id:"event-accommodation", rows: 1, required: false, placeholder: " ", maxlength: 100, class: "resize-none #{formBarColors} peer" %>
           <label for="event-accommodation" class="absolute <%= floatingLabelSmall %>">Accommodation (Optional)</label>
         </div>
       </div>
@@ -111,7 +114,7 @@
           </div>
         </div>
         <div class="relative w-full">
-          <%= form.text_field :parking_instructions, id: "event-parking-instructions", required: false, maxlength: 100, placeholder: " ", class: "#{formBarColors} peer" %>
+          <%= form.text_area :parking_instructions, id: "event-parking-instructions", rows: 1, required: false, maxlength: 100, placeholder: " ", class: "resize-none #{formBarColors} peer" %>
           <label for="event-parking-instructions" class="absolute <%= floatingLabelSmall %>">Parking Instructions (Optional)</label>
         </div>
       </div>
@@ -124,13 +127,13 @@
           </div>
         </div>
         <div class="relative w-full">
-          <%= form.text_area :additional_info, id: "event-additional-info", required: false, placeholder: " ", maxlength: 150, class: "#{formBarColors} peer" %>
+          <%= form.text_area :additional_info, id: "event-additional-info", rows: 1, required: false, placeholder: " ", maxlength: 300, class: "resize-none #{formBarColors} peer" %>
           <label for="event-additional-info" class="absolute <%= floatingLabelSmall %>">Additional Info (Optional)</label>
         </div>
       </div>
       <div class="mt-10 mb-5 w-full relative">
-        <%= form.text_area :description, id: "event-description", required: true, placeholder: " ", 
-          class: "w-full h-[300px] field-sizing-content #{formBarColors} peer" %>
+        <%= form.text_area :description, id: "event-description", rows: 10, required: true, placeholder: " ", 
+          class: "resize-none w-full h-[300px] field-sizing-content #{formBarColors} peer" %>
         <label for="event-description" 
                class="absolute text-xl font-work-sans start-1 duration-300 transform left-[-1px] origin-[0] p-3 text-gray-400
                       peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/12

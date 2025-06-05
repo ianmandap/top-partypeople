@@ -15,8 +15,8 @@ module EventsHelper
     # "😢 DID NOT GO"
   end
 
-  def array_of_cover_images
-    Dir.entries(Rails.root.join("app/assets/images/posters")) - [ ".", ".." ]
+  def array_of_display_posters
+    Dir.entries(Rails.root.join("public/posters")) - [ ".", ".." ]
   end
 
   def on_new_event_path?

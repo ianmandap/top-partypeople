@@ -18,9 +18,9 @@ module ComponentsHelper
   def floatingLabelBig
     "absolute font-work-sans start-1 duration-300 transform left-[-1px] origin-[0] p-3 text-gray-400
      peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2
-     peer-focus:bg-white peer-focus:text-brandblack peer-focus:top-2 peer-focus:scale-30 peer-focus:-translate-y-10
+     peer-focus:bg-white peer-focus:text-brandblack peer-focus:top-2 peer-focus:scale-30 peer-focus:-translate-y-10.5
      not-peer-placeholder-shown:bg-white not-peer-placeholder-shown:text-brandblack not-peer-placeholder-shown:top-2
-     not-peer-placeholder-shown:scale-30 not-peer-placeholder-shown:-translate-y-10"
+     not-peer-placeholder-shown:scale-30 not-peer-placeholder-shown:-translate-y-10.5"
   end
 
   def floatingLabelSmall

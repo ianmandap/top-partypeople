@@ -5,8 +5,8 @@
 #  id                   :bigint           not null, primary key
 #  accommodation        :string
 #  additional_info      :string
-#  cover_image          :string
 #  description          :text
+#  display_poster       :string
 #  dress_code           :string
 #  end_date             :datetime
 #  food_situation       :string
@@ -28,7 +28,7 @@ FactoryBot.define do
   factory :event do
     association :creator, factory: :user
     title                { Faker::Book.title }
-    cover_image          { (Dir.entries(Rails.root.join('app/assets/images/posters')) - [ '.', '..' ]).sample }
+    display_poster       { (Dir.entries(Rails.root.join('public/posters')) - [ '.', '..' ]).sample }
     start_date           { Random.rand(3..12).days.from_now }
     description          { Faker::Lorem.paragraphs(number: rand(10..20)).join("\n") }
     location             { Faker::Address.street_address }
