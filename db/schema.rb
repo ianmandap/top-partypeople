@@ -13,9 +13,10 @@
 ActiveRecord::Schema[8.0].define(version: 2025_05_16_182832) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+  enable_extension "pgcrypto"
 
-  create_table "events", force: :cascade do |t|
-    t.bigint "creator_id"
+  create_table "events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "creator_id"
     t.string "title"
     t.string "display_poster"
     t.datetime "start_date"
@@ -35,8 +36,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_16_182832) do
   end
 
   create_table "invites", force: :cascade do |t|
-    t.bigint "attendee_id"
-    t.bigint "event_id"
+    t.uuid "attendee_id"
+    t.uuid "event_id", null: false
     t.integer "status", default: 0
     t.boolean "is_approved", default: false, null: false
     t.datetime "created_at", null: false
@@ -46,7 +47,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_16_182832) do
   end
 
   create_table "sessions", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.string "ip_address"
     t.string "user_agent"
     t.datetime "created_at", null: false
@@ -54,7 +55,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_16_182832) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email_address", null: false
     t.string "password_digest", null: false
     t.string "display_name", null: false
@@ -63,5 +64,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_16_182832) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "events", "users", column: "creator_id"
+  add_foreign_key "invites", "events"
+  add_foreign_key "invites", "users", column: "attendee_id"
   add_foreign_key "sessions", "users"
 end

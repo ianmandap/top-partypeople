@@ -1,7 +1,7 @@
 class CreateEvents < ActiveRecord::Migration[8.0]
   def change
-    create_table :events do |t|
-      t.bigint :creator_id, index: true
+    create_table :events, id: :uuid do |t|
+      t.references :creator, type: :uuid, index: true, foreign_key: { to_table: :users }
 
       t.string :title
       t.string :display_poster

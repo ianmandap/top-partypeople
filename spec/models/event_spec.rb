@@ -2,7 +2,7 @@
 #
 # Table name: events
 #
-#  id                   :bigint           not null, primary key
+#  id                   :uuid             not null, primary key
 #  accommodation        :string
 #  additional_info      :string
 #  description          :text
@@ -18,11 +18,15 @@
 #  title                :string
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
-#  creator_id           :bigint
+#  creator_id           :uuid
 #
 # Indexes
 #
 #  index_events_on_creator_id  (creator_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (creator_id => users.id)
 #
 require 'rails_helper'
 
