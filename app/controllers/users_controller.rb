@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  allow_unauthenticated_access only: [ :new ]
+  allow_unauthenticated_access only: [ :new, :create ]
   before_action :set_user, only: %i[ show edit update destroy ]
 
   # GET /users/1 or /users/1.json
@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    authorize @user
   end
 
   # POST /users or /users.json
@@ -49,6 +50,7 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
+    authorize @user
     @user.destroy!
 
     respond_to do |format|
@@ -58,13 +60,11 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params.expect(:id))
     end
 
-    # Only allow a list of trusted parameters through.
     def user_params
-      params.fetch(:user, {})
+      params.expect(user: [ :email_address, :password, :password_confirmation, :display_name ])
     end
 end
