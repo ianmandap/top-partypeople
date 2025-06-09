@@ -1,9 +1,11 @@
 class EventsController < ApplicationController
   allow_unauthenticated_access only: [ :index, :new, :show ]
   before_action :set_event, only: %i[ show edit update destroy ]
+  before_action :authorize_user, only: %i[edit update destroy]
 
   def index
-    @events = Event.upcoming.order(start_date: :asc)
+    @user = authenticated? && Current.user
+    @events = Event.is_public.upcoming.order(start_date: :asc)
   end
 
   def show
@@ -15,7 +17,6 @@ class EventsController < ApplicationController
   end
 
   def edit
-    authorize @event
   end
 
   def create
@@ -34,7 +35,6 @@ class EventsController < ApplicationController
   end
 
   def update
-    authorize @event
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to @event, notice: "Event was successfully updated." }
@@ -47,7 +47,6 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    authorize @event
     @event.destroy!
 
     respond_to do |format|
@@ -66,5 +65,9 @@ class EventsController < ApplicationController
   def event_params
     params.expect(event: [ :title, :display_poster, :location, :max_capacity, :food_situation, :dress_code, :accommodation,
                            :parking_instructions, :additional_info, :description, :start_date, :end_date, :is_public ])
+  end
+
+  def authorize_user
+    authorize @event
   end
 end

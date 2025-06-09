@@ -4,15 +4,17 @@ module EventsHelper
   end
 
   def display_user_status_on_event(event:, user:)
-    return "NIL" if event.nil? || user.nil?
+    return "" if event.nil? || user.nil?
 
     if event.creator_id == user.id
       event.past? ? "👑 HOSTED" : "👑 HOSTING"
-    else
-      # Not hosting event ergo attended the event
+    elsif event.attendee_ids.include?(user.id)
+      # TODO:check invitation status
       event.past? ? "👍 WENT" : "👍 WILL GO"
+      # "😢 DID NOT GO"
+    else
+      event.past? ? "" : "OPEN INVITE"
     end
-    # "😢 DID NOT GO"
   end
 
   def array_of_display_posters

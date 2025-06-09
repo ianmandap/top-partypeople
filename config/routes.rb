@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   get "/about", to: "pages#about"
 
   resources :users, except: [ :index ]
-  resources :events
+  resources :events do
+    resources :invites, except: %i[show]
+  end
   resource :session
   resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

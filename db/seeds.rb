@@ -1,4 +1,4 @@
-FactoryBot.create_list(:event, 3)
+FactoryBot.create(:event, :past)
 u1 = FactoryBot.create(:user, display_name: "John", email_address: "user@example.com")
 u2 = FactoryBot.create(:user, display_name: "Maya")
 

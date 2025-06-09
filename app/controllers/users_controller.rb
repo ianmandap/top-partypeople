@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   allow_unauthenticated_access only: [ :new, :create ]
   before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :authorize_user, only: %i[ edit update destroy]
 
   # GET /users/1 or /users/1.json
   def show
@@ -17,7 +18,6 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    authorize @user
   end
 
   # POST /users or /users.json
@@ -50,7 +50,6 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    authorize @user
     @user.destroy!
 
     respond_to do |format|
@@ -66,5 +65,9 @@ class UsersController < ApplicationController
 
     def user_params
       params.expect(user: [ :email_address, :password, :password_confirmation, :display_name ])
+    end
+
+    def authorize_user
+      authorize @user
     end
 end

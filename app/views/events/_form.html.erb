@@ -31,6 +31,10 @@
       <div class="flex flex-row mb-2">
         <%= render DateTimePickerComponent.new(event: @event, name:"event[start_date]") %>
       </div>
+      <%= form.label :is_public, "", class: "my-2 flex flex-row gap-2 w-full text-sm cursor-pointer #{formBarColors}" do %>
+        <%= form.checkbox :is_public, id: "event_is_public", class: "cursor-pointer text-teal-700 focus:ring-teal-700" %>
+        <div>List this Party in <strong>Public Events?</strong></div>
+      <% end %>
       <div class="flex items-center justify-start my-4">
         <div class="w-auto h-auto mr-3">
           <%= icon 'crown', library: "boxicons" %>
