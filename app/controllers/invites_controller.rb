@@ -1,10 +1,13 @@
 class InvitesController < ApplicationController
 before_action :set_event
-before_action :set_invite, only: %i[ show edit update destroy ]
-before_action :authorize_user, except: %i[show]
+before_action :set_invite, only: %i[ edit update destroy ]
+before_action :authorize_user, except: %i[index]
 
 def index
-  @invites = Invite.all
+  @invite = Invite.new(event: @event) # stub for authorization
+  authorize @invite
+
+  @invites = Invite.includes(:attendee).where(event: @event)
 end
 
 def new

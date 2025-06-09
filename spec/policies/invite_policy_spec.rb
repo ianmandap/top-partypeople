@@ -25,8 +25,11 @@ RSpec.describe InvitePolicy, type: :policy do
       expect(subject).to permit(creator, invite)
     end
 
-    it "does NOT grant access if a random user" do
-      expect(subject).not_to permit(attendee, invite)
+    it "grants access if user is attendee" do
+      expect(subject).to permit(attendee, invite)
+    end
+    it "does NOT grant access if unregistered user" do
+      expect(subject).not_to permit(User.new, invite)
     end
   end
 

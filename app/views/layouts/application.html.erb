@@ -25,5 +25,6 @@
       <%= yield %>
     </main>
     <%= render FooterComponent.new %>
+    <%= turbo_frame_tag "modal" %>
   </body>
 </html>
