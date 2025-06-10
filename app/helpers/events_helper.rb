@@ -2,7 +2,7 @@ module EventsHelper
   def guest_list_subtext(invites:)
     maybe_count = invites.maybe.count
     text = "#{invites.attending.count} Going"
-    text += " | #{maybe_count} Maybe" unless maybe_count.zero?
+    text += " · #{maybe_count} Maybe" unless maybe_count.zero?
 
     text
   end

@@ -110,14 +110,18 @@
       <%= link_to event_invites_path(event_id: params[:id]),
             class: "",
             data: { turbo_frame: "modal" } do %>
-        <div class="outline-red-500 outline-4 flex flex-col">
+        <div class="flex flex-col">
           <div class="flex flex-row justify-between">
-            <span class="font-black">Guest List</span>
-            <button>View All</button>
+            <div class="flex flex-col">
+              <span class="font-black">Guest List</span>
+              <span class="text-sm"><%= guest_list_subtext(invites: @invites) %></span>
+            </div>
+            <button class="cursor-pointer py-3 px-5 text-base font-medium text-center text-white rounded-lg hover:brightness-75 bg-brandblack focus:ring-4 focus:ring-blue-300">
+              View All
+            </button>
           </div>
-          <span class="text-sm"><%= guest_list_subtext(invites: @invites) %></span>
+          <%= render AvatarStackComponent.new(invites: @invites.accepted) %>
         </div>
-        <%= render AvatarStackComponent.new(attendees: @event.attendees, modal_id: "guest-list") %>
       <% end %>
     <% end %>
   </div>

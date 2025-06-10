@@ -10,12 +10,6 @@
     <li class="">
       <%= link_to "Edit Profile", edit_user_path(id: Current.user.id), { class: "block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-brandwhite" } %>
     </li>
-    <!--    <li>
-      <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-brandwhite">Settings</a>
-    </li>
-    <li>
-      <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-brandwhite">Earnings</a>
-    </li>-->
   </ul>
   <div class="py-1">
     <%= link_to "Logout", session_path, data: { turbo_method: :delete }, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-brandwhite" %>

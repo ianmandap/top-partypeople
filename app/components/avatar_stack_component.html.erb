@@ -1,31 +1,19 @@
-<% if @attendees.any? %>
-  <div class="flex flex-row">
-    <div class="flex -space-x-3 rtl:space-x-reverse">
-      <% @attendees.each_with_index do |attendee, idx| %>
-        <!-- if third attendee, put icon stating how many attendees are left -->
-        <% if idx == 2 %>
-          <%= render AvatarsStackModalComponent.new(size: @attendees.size - idx, attendees: @attendees, 
-                                                    modal_id: @modal_id) %>
+<% if @invites.any? %>
+  <div class="flex flex-row mt-2">
+    <div class="flex space-x-0.5 w-full h-auto">
+      <% @invites.each_with_index do |invite, idx| %>
+        <div id="tooltip-avatar-<%= idx %>" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip">
+          <%= invite.attendee.display_name %>
+          <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+        <% if idx == 5 && @invites.size > 5 %>
+          <%= render AvatarPlaceholderComponent.new(placeholder_initial: "#{@invites.size - 5}+", size: 14) %>
           <% break %>
         <% end %>
-        <%= render AvatarPlaceholderComponent.new(placeholder_initial: attendee.placeholder_initial) %>
+        <%= render AvatarPlaceholderComponent.new(placeholder_initial: invite.attendee.placeholder_initial, 
+                                                    size: 14,
+                                                    data_hash: {tooltip_target: "tooltip-avatar-#{idx}"}) %>
       <% end %>
     </div>
-    <span class="ml-5 mr-2 text-sm font-bold">
-      <% if @attendees.size == 1 %>
-        <%= link_to @attendees[0].display_name, user_path(id: @attendees[0].id), class: "text-blue-500 hover:underline" %> is attending
-      <% elsif @attendees.size == 2 %>
-        <%= link_to @attendees[0].display_name, user_path(id: @attendees[0].id), class: "text-blue-500 hover:underline" %> and 
-        <%= link_to @attendees[1].display_name, user_path(id: @attendees[1].id), class: "text-blue-500 hover:underline" %> are attending
-      <% else %>
-        <%= link_to @attendees[0].display_name, user_path(id: @attendees[0].id), class: "text-blue-500 hover:underline" %>,
-        <%= link_to @attendees[1].display_name, user_path(id: @attendees[1].id), class: "text-blue-500 hover:underline" %>, 
-        and 
-        <span data-modal-target=<%= @modal_id %> 
-              data-modal-toggle=<%= @modal_id %>
-              class="hover:cursor-pointer text-blue-500 hover:underline"><%= @attendees.size - 2 %> others</span>
-        are attending
-      <% end %>
-    </span>
   </div>
 <% end %>
