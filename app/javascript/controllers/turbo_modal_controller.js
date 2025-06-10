@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="turbo-modal"
 export default class extends Controller {
-  static targets = ["modal"]
+  static targets = ["modal", "container"]
 
   // action: "turbo-modal#hideModal"
   hideModal() {
@@ -10,5 +10,22 @@ export default class extends Controller {
     this.modalTarget.parentElement.removeAttribute("src")
     // Without this, turbo won't re-open the modal on subsequent click
     this.modalTarget.remove()
+  }
+
+  // hide modal when clicking ESC
+  // action: "keyup@window->turbo-modal#closeWithKeyboard"
+  closeWithKeyboard(e) {
+    if (e.code == "Escape") {
+      this.hideModal()
+    }
+  }
+
+  // hide modal when clicking outside of modal
+  // action: "click@window->turbo-modal#closeBackground"
+  closeBackground(e) {
+    if (e && this.containerTarget.contains(e.target)) {
+      return
+    }
+    this.hideModal()
   }
 }

@@ -1,4 +1,5 @@
 class InvitesController < ApplicationController
+before_action :ensure_frame_response, only: [ :index ]
 before_action :set_event
 before_action :set_invite, only: %i[ edit update destroy ]
 before_action :authorize_user, except: %i[index]
@@ -53,6 +54,11 @@ def destroy
 end
 
 private
+  def ensure_frame_response
+    return unless Rails.env.development?
+    redirect_back(fallback_location: root_path) unless turbo_frame_request?
+  end
+
   def set_event
     @event = Event.find(params.expect(:event_id))
   end

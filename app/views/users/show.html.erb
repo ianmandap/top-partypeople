@@ -12,7 +12,7 @@
     <%= render CreateEventBtnComponent.new %>
   </div>
   <div class="">
-    <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-styled-tab" data-tabs-toggle="#default-styled-tab-content" 
+    <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="event-tabs" data-tabs-toggle="#event-tabs-content" 
       data-tabs-active-classes="text-activelink"
       data-tabs-inactive-classes="border-transparent <%= hoverBrandColors %> hover:contrast-40" 
       role="tablist">
@@ -30,7 +30,7 @@
       </li>
     </ul>
   </div>
-  <div id="default-styled-tab-content">
+  <div id="event-tabs-content">
     <div class="hidden" id="styled-upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
       <div class="flex w-full flex-row flex-wrap justify-evenly items-start">
         <%= render EventsCardComponent.new(events: @upcoming, user: @user) %>

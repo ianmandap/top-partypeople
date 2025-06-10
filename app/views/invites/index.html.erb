@@ -1,26 +1,16 @@
 <% content_for :title, "Invites" %>
-<%#= turbo_frame_tag "modal" do %>
-  <!--  <div class="w-full">-->
-  <%# if notice.present? %>
-  <!--      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%#= notice %></p>-->
-  <%# end %>
-  <!--    <div id="invites" class="min-w-full divide-y divide-gray-200 space-y-5">-->
-  <%# if @invites.any? %>
-  <%# @invites.each do |invite| %>
-    <!--          <div class="flex flex-col sm:flex-row justify-between items-center pb-5 sm:pb-0">-->
-    <%#= render invite %>
-    <!--            <div class="w-full sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">-->
-    <%#= link_to "Edit", edit_invite_path(invite), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-    <%#= link_to invite, class: "block w-full", data: { turbo_confirm: "Are you sure you want to delete this invite?", turbo_method: :delete } %>
-    <!--            </div>
-          </div>
-        <%# end %>-->
-    <%# else %>
-    <!--        <p class="text-center my-10">No invites found.</p>-->
-    <%# end %>
-    <!--    </div>
-  </div>
-<%# end %>-->
-    <%= render TurboModalComponent.new(title: "Guest List") do %>
-      <div>THIS IS ACCESSED WITH `contents` instead of `yield`</div>
+<%= render TurboModalComponent.new(title: "Guest List") do %>
+  <div id="invites" class="min-w-full divide-y divide-gray-200 space-y-5">
+    <% if @invites.any? %>
+      <% @invites.each do |invite| %>
+        <div class="flex flex-col">
+          <%= render invite %>
+          <%#= link_to "Edit", edit_invite_path(invite), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+          <%#= link_to invite, class: "block w-full", data: { turbo_confirm: "Are you sure you want to delete this invite?", turbo_method: :delete } %>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="text-center my-10">No invites found.</p>
     <% end %>
+  </div>
+<% end %>
