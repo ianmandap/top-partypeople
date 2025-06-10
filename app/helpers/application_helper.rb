@@ -3,35 +3,13 @@ module ApplicationHelper
     request.path == path
   end
 
-  def formatted_date_iso(date)
-    date.strftime("%F")
+  def creator?(event)
+    current_user = authenticated? && Current.user
+    current_user.id == event.creator.id
   end
 
-  def formatted_date(date)
-    date.strftime("%A, %b %d")
-  end
-
-  def formatted_time(date)
-    date.strftime("%-I:%M %p")
-  end
-
-  def formatted_time_long(date)
-    date.strftime("%I:%M %p")
-  end
-
-  def formatted_date_and_time_short(date)
-    if date.strftime("%M") == "00"
-      date.strftime("%a %-m/%-d · %l%P")
-    else
-      date.strftime("%a %-m/%-d · %l:%M%P")
-    end
-  end
-
-  def formatted_date_and_time_long(date)
-    if date.strftime("%M") == "00"
-      date.strftime("%a, %b %-d · %l%P")
-    else
-      date.strftime("%a, %b %-d · %l:%M%P")
-    end
+  def attendee?(event)
+    current_user = authenticated? && Current.user
+    event.attendee_ids.include?(current_user.id)
   end
 end

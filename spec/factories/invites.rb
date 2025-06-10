@@ -22,7 +22,10 @@
 #
 FactoryBot.define do
   factory :invite do
+    traits_for_enum :status
+
     association :event, factory: :event
     association :attendee, factory: :user
+    status { :attending }
   end
 end

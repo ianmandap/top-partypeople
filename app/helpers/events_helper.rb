@@ -1,20 +1,10 @@
 module EventsHelper
-  def hosting?(event:)
-    event.creator&.id == Current.user.id
-  end
+  def guest_list_subtext(invites:)
+    maybe_count = invites.maybe.count
+    text = "#{invites.attending.count} Going"
+    text += " | #{maybe_count} Maybe" unless maybe_count.zero?
 
-  def display_user_status_on_event(event:, user:)
-    return "" if event.nil? || user.nil?
-
-    if event.creator_id == user.id
-      event.past? ? "👑 HOSTED" : "👑 HOSTING"
-    elsif event.attendee_ids.include?(user.id)
-      # TODO:check invitation status
-      event.past? ? "👍 WENT" : "👍 WILL GO"
-      # "😢 DID NOT GO"
-    else
-      event.past? ? "" : "OPEN INVITE"
-    end
+    text
   end
 
   def array_of_display_posters
@@ -33,5 +23,29 @@ module EventsHelper
   def on_edit_event_path?
     return false if params[:id].nil?
     request.path == edit_event_path
+  end
+
+  def display_user_status_on_event(event:, user:)
+    return "" if event.nil? || user.nil?
+
+    if event.creator_id == user.id
+      event.past? ? return "👑 HOSTED" : return "👑 HOSTING"
+    end
+
+    invite = Invite.find_by(event: event, attendee: user)
+    return "OPEN INVITE" if invite.nil?
+
+    case invite.status
+    when "pending"
+      event.past? ? "😢 DID NOT GO" : "⏳ PENDING"
+    when "attending"
+      event.past? ? "👍 WENT" : "👍 WILL GO"
+    when "maybe"
+      event.past? ? "👍 WENT" : "🤔 MIGHT GO"
+    when "declined"
+      "DECLINED"
+    when "waitlist"
+      event.past? ? "😢 DID NOT GO" : "⏳ WAITLIST"
+    end
   end
 end

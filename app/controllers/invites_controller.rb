@@ -1,11 +1,12 @@
 class InvitesController < ApplicationController
-before_action :ensure_frame_response, only: [ :index ]
+# before_action :ensure_frame_response, only: [ :index ]
 before_action :set_event
 before_action :set_invite, only: %i[ edit update destroy ]
 before_action :authorize_user, except: %i[index]
 
 def index
-  @invite = Invite.new(event: @event) # stub for authorization
+  # get attendee's invite or if creator stub invite for authorization
+  @invite = Invite.find_by(attendee: Current.user, event: @event) || Invite.new(event: @event)
   authorize @invite
 
   @invites = Invite.includes(:attendee).where(event: @event)

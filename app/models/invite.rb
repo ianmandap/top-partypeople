@@ -40,4 +40,6 @@ class Invite < ApplicationRecord
       errors.add(:attendee, "is not valid. Event host cannot be an attendee")
     end
   end
+
+  scope :accepted, -> { where(status: :attending).or(self.where(status: :maybe)) }
 end

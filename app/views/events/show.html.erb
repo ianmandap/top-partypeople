@@ -9,7 +9,9 @@
                 mb-5 md:fixed md:mr-5 md:w-1/3 md:self-auto md:right-1/9 md:top-1/6">
       <%= image_tag "/posters/#{@event.display_poster}", alt: "party image", 
         class: "aspect-square object-contain w-full h-full max-w-[400px] md:max-w-[450px]"  %>
-      <%#= render RsvpModalComponent.new %>
+      <% if attendee?(@event) %>
+        <%= render RsvpModalComponent.new %>
+      <% end %>
     </div>
     <div class="text-3xl font-black mt-5"><%= formatted_date(@event.start_date) %></div>
     <div class="text-xl text-branddarkgray brightness-70 mb-5"><%= formatted_time(@event.start_date) %></div>
@@ -41,7 +43,7 @@
           <div class="tooltip-arrow" data-popper-arrow></div>
         </div>
       </div>
-      <div class=""><%= @attendees.size %>/<%= @event.max_capacity %> guests are going</div>
+      <div class=""><%= @event.max_capacity - @accepted_count %>/<%= @event.max_capacity %> spots left</div>
     </div>
     <% if @event.food_situation.present? %>
       <div class="flex flex-row mb-2">
@@ -104,10 +106,20 @@
       </div>
     <% end %>
     <div class="mt-10 mb-5"><%= @event.description %></div>
-    <%= link_to "Guest List",
-            event_invites_path(event_id: params[:id]),
-            class: "font-black",
-            data: { turbo_frame: "modal" } %>
+    <% if creator?(@event) || attendee?(@event) %>
+      <%= link_to event_invites_path(event_id: params[:id]),
+            class: "",
+            data: { turbo_frame: "modal" } do %>
+        <div class="outline-red-500 outline-4 flex flex-col">
+          <div class="flex flex-row justify-between">
+            <span class="font-black">Guest List</span>
+            <button>View All</button>
+          </div>
+          <span class="text-sm"><%= guest_list_subtext(invites: @invites) %></span>
+        </div>
+        <%= render AvatarStackComponent.new(attendees: @event.attendees, modal_id: "guest-list") %>
+      <% end %>
+    <% end %>
   </div>
   <%= render SidebarComponent.new(event: @event, form: nil) %>
 </div>

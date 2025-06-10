@@ -21,3 +21,8 @@ FactoryBot.create_list(:event, 2, :past, creator: u1)
 # as attendee
 pe1 = FactoryBot.create(:event, :past, creator: u2)
 FactoryBot.create(:invite, attendee: u1, event: pe1)
+
+# invites
+Invite.statuses.keys.each do |key|
+  FactoryBot.create(:invite, status: key.to_sym, event: e1)
+end

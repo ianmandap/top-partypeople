@@ -1,15 +1,17 @@
 class EventsController < ApplicationController
   allow_unauthenticated_access only: [ :index, :new, :show ]
+  before_action :set_user, only: %i[index]
   before_action :set_event, only: %i[ show edit update destroy ]
   before_action :authorize_user, only: %i[edit update destroy]
 
   def index
-    @user = authenticated? && Current.user
     @events = Event.is_public.upcoming.order(start_date: :asc)
   end
 
   def show
-    @attendees = @event.attendees
+    @invite = Invite.find_by(attendee: Current.user, event: @event)
+    @invites = @event.invites
+    @accepted_count = @invites.accepted.count || 0
   end
 
   def new
@@ -56,9 +58,13 @@ class EventsController < ApplicationController
   end
 
   private
+  def set_user
+    @user = authenticated? && Current.user
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_event
-    @event = Event.find(params.expect(:id))
+    @event = Event.includes(:invites, :attendees).find(params.expect(:id))
   end
 
   # Only allow a list of trusted parameters through.
