@@ -11,45 +11,30 @@
     <% end %>
     <%= render CreateEventBtnComponent.new %>
   </div>
-  <div class="">
-    <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="event-tabs" data-tabs-toggle="#event-tabs-content" 
-      data-tabs-active-classes="text-activelink"
-      data-tabs-inactive-classes="border-transparent <%= hoverBrandColors %> hover:contrast-40" 
-      role="tablist">
-      <li class="me-2" role="presentation">
-        <button class="inline-block p-3 border-b-2 rounded-t-lg" id="upcoming-styled-tab" data-tabs-target="#styled-upcoming" type="button" role="tab" aria-controls="upcoming" aria-selected="false">Upcoming <%= @upcoming.size %></button>
-      </li>
-      <li class="me-2" role="presentation">
-        <button class="inline-block p-3 border-b-2 rounded-t-lg" id="hosting-styled-tab" data-tabs-target="#styled-hosting" type="button" role="tab" aria-controls="hosting" aria-selected="false">Hosting <%= @hosting.size %></button>
-      </li>
-      <li class="me-2" role="presentation">
-        <button class="inline-block p-3 border-b-2 rounded-t-lg" id="attended-styled-tab" data-tabs-target="#styled-attended" type="button" role="tab" aria-controls="attended" aria-selected="false">Attended <%= @attended_events.size %></button>
-      </li>
-      <li role="presentation">
-        <button class="inline-block p-3 border-b-2 rounded-t-lg" id="past-events-styled-tab" data-tabs-target="#styled-past-events" type="button" role="tab" aria-controls="past-events" aria-selected="false">All Past Events <%= @past_events.size %></button>
-      </li>
-    </ul>
-  </div>
-  <div id="event-tabs-content">
-    <div class="hidden" id="styled-upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+  <%= render TabsComponent.new(id: "event-tabs") do |component| %>
+    <% component.with_header(header_id: "upcoming", header_title: "Upcoming #{@upcoming.size}") %>
+    <% component.with_body(header_id: "upcoming") do %>
       <div class="flex w-full flex-row flex-wrap justify-evenly items-start">
         <%= render EventsCardComponent.new(events: @upcoming, user: @user) %>
       </div>
-    </div>
-    <div class="hidden" id="styled-hosting" role="tabpanel" aria-labelledby="hosting-tab">
+    <% end %>
+    <% component.with_header(header_id: "hosting", header_title: "Hosting #{@hosting.size}") %>
+    <% component.with_body(header_id: "hosting") do %>
       <div class="flex w-full flex-row flex-wrap justify-evenly items-start">
         <%= render EventsCardComponent.new(events: @hosting, user: @user) %>
       </div>
-    </div>
-    <div class="hidden" id="styled-attended" role="tabpanel" aria-labelledby="attended-tab">
+    <% end %>
+    <% component.with_header(header_id: "attended", header_title: "Attended #{@attended_events.size}") %>
+    <% component.with_body(header_id: "attended") do %>
       <div class="flex w-full flex-row flex-wrap justify-evenly items-start">
         <%= render EventsCardComponent.new(events: @attended_events, user: @user) %>
       </div>
-    </div>
-    <div class="hidden" id="styled-past-events" role="tabpanel" aria-labelledby="past-events-tab">
+    <% end %>
+    <% component.with_header(header_id: "past_events", header_title: "Past Events #{@past_events.size}") %>
+    <% component.with_body(header_id: "past_events") do %>
       <div class="flex w-full flex-row flex-wrap justify-evenly items-start">
         <%= render EventsCardComponent.new(events: @past_events, user: @user) %>
       </div>
-    </div>
-  </div>
+    <% end %>
+  <% end %>
 </div>

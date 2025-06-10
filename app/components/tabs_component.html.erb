@@ -1,0 +1,17 @@
+<div id="<%= @id %>-header">
+  <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" 
+      id="<%= @id %>" 
+      data-tabs-toggle="#<%= @id %>-content" 
+      data-tabs-active-classes="text-activelink"
+      data-tabs-inactive-classes="border-transparent <%= helpers.hoverBrandColors %> hover:contrast-40" 
+      role="tablist">
+    <% headers.each do |header| %>
+      <%= header %>
+    <% end %>
+  </ul>
+</div>
+<div id="<%= @id %>-content">
+  <% bodies.each do |body| %>
+    <%= body %>
+  <% end %>
+</div>
