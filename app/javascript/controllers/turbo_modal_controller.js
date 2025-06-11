@@ -12,6 +12,15 @@ export default class extends Controller {
     this.modalTarget.remove()
   }
 
+  // hide modal on successful form submission
+  // action: "turbo:submit-end->turbo-modal#submitEnd"
+  submitEnd(e) {
+    if (e.detail.success) {
+      this.hideModal()
+      window.location.reload(); // hacky workaround: not using Turbo Streams to update page
+    }
+  }
+
   // hide modal when clicking ESC
   // action: "keyup@window->turbo-modal#closeWithKeyboard"
   closeWithKeyboard(e) {

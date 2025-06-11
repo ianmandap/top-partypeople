@@ -10,7 +10,9 @@
       <%= image_tag "/posters/#{@event.display_poster}", alt: "party image", 
         class: "aspect-square object-contain w-full h-full max-w-[400px] md:max-w-[450px]"  %>
       <% unless creator?(@event) %>
-        <%= render RsvpModalComponent.new(invite: @invite) %>
+        <%= link_to new_event_invite_path(@event), data: { turbo_frame: "modal" } do %>
+          <%= render RsvpModalComponent.new(invite: @invite) %>
+        <% end %>
       <% end %>
     </div>
     <div class="text-3xl font-black mt-5"><%= formatted_date(@event.start_date) %></div>

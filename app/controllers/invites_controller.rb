@@ -32,6 +32,7 @@ def create
 
   respond_to do |format|
     if @invite.save
+      # format.turbo_stream { render turbo_stream: turbo_stream.replace("invite", partial: "invites/invite", locals: { invite: @invite }) }
       format.html { redirect_to @event, notice: "Invite was successfully created." }
       format.json { render :show, status: :created, location: @event }
     else
@@ -44,6 +45,7 @@ end
 def update
   respond_to do |format|
     if @invite.update(invite_params)
+      # format.turbo_stream { render turbo_stream: turbo_stream.replace("invite", partial: "invites/invite", locals: { invite: @invite }) }
       format.html { redirect_to @event, notice: "Invite was successfully updated." }
       format.json { render :show, status: :ok, location: @event }
     else
@@ -57,6 +59,7 @@ def destroy
   @invite.destroy!
 
   respond_to do |format|
+    # format.turbo_stream { render turbo_stream: turbo_stream.remove(@invite) }
     format.html { redirect_to @event, status: :see_other, notice: "Invite was successfully destroyed." }
     format.json { head :no_content }
   end

@@ -2,14 +2,14 @@ FactoryBot.create(:event, :past)
 u1 = FactoryBot.create(:user, display_name: "John", email_address: "user@example.com")
 u2 = FactoryBot.create(:user, display_name: "Maya")
 
-e1 = FactoryBot.create(:event, creator: u1)
+e1 = FactoryBot.create(:event, creator: u1, max_capacity: 20)
 e2 = FactoryBot.create(:event, creator: u2)
 e3 = FactoryBot.create(:event)
 
 FactoryBot.create_list(:event, 4, creator: u1)
 
 FactoryBot.create(:invite, event: e1, attendee: u2)
-FactoryBot.create_list(:invite, 3, event: e1)
+FactoryBot.create_list(:invite, 7, event: e1)
 FactoryBot.create_list(:invite, 3, event: e2)
 FactoryBot.create_list(:invite, 2, event: e3)
 FactoryBot.create(:invite, attendee: u1)

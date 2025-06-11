@@ -30,17 +30,14 @@
         <% end %>
       </li>
     </ul>
-    <div class="flex flex-row mt-10 gap-5 w-fit">
-    <%= form.submit class: "cursor-pointer py-3 px-5 text-base font-medium text-center text-white rounded-lg hover:brightness-75 bg-brandblack focus:ring-4 focus:ring-blue-300" %>
-    <% if params[:id].present? %>
-      <%= link_to [@event, @invite], class: "block w-full", data: { turbo_confirm: "Are you sure you want to delete this invite?", turbo_method: :delete } do %>
-        <div class="flex items-start cursor-pointer py-3 px-5 text-base font-medium text-center text-white rounded-lg hover:brightness-75 focus:ring-4 bg-red-500">
-          <%= icon 'x', library: "boxicons" %>
-          <span class="ml-2">Delete Invite</span>
-        </div>
-      <% end %>
-    <% end %>
-    </div>
+    <%= form.submit class: "my-3 w-fit cursor-pointer py-3 px-5 text-base font-medium text-center text-white rounded-lg hover:brightness-75 bg-brandblack focus:ring-4 focus:ring-blue-300" %>
   </div>
 <% end %>
-
+<% if params[:id].present? %>
+  <%= button_to [@event, @invite], class: "self-end my-1 block w-fit", method: :delete, data: { turbo_confirm: "Are you sure you want to delete this invite?" } do %>
+    <div class="flex items-start cursor-pointer py-3 px-5 text-base font-medium text-center text-white rounded-lg hover:brightness-75 focus:ring-4 bg-red-500">
+      <%= icon 'x', library: "boxicons" %>
+      <span class="ml-2">Delete Invite</span>
+    </div>
+  <% end %>
+<% end %>
