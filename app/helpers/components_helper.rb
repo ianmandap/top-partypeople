@@ -26,4 +26,11 @@ module ComponentsHelper
   def floatingLabelSmall
     "#{floatingLabelBig} text-sm peer-focus:scale-65 not-peer-placeholder-shown:scale-65"
   end
+
+  def rsvpLabelForm
+    "aspect-square cursor-pointer relative min-w-33 md:min-w-25 lg:w-34 xl:w-38 w-full h-auto bg-purple-50 rounded-full flex flex-col justify-center items-center
+      peer-checked:shadow-[0_0px_12px_5px_rgba(255,255,255,0.75)_inset] peer-checked:ring-4 peer-checked:ring-bluerain-hr
+      peer-checked:bg-radial-[at_65%_20%] peer-checked:from-brandwhite peer-checked:to-greenrain peer-checked:to-80% transition delay-25 duration-250
+      p-2 bg-linear-to-r from-purplerain-hr to-pinkrain-hr hover:brightness-102"
+  end
 end

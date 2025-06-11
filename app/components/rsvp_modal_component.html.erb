@@ -1,87 +1,22 @@
 <div class="w-full mt-3 text-2xl md:text-sm lg:text-xl xl:text-2xl">
   <ul class="flex flex-row items-center justify-center gap-3">
-    <li class="w-full">
-      <input type="radio" id="invite-status-going" name="status" value="going" class="hidden peer" required />
-      <label for="invite-status-going" data-modal-target="rsvp-modal" data-modal-toggle="rsvp-modal" class="
-                  aspect-square cursor-pointer relative min-w-30 md:min-w-20 max-w-40 w-full h-auto bg-purple-50 rounded-full flex flex-col justify-center items-center
-                  peer-checked:shadow-[0_0px_12px_5px_rgba(255,255,255,0.75)_inset] peer-checked:ring-4 peer-checked:ring-bluerain-hr
-                  p-2 bg-linear-to-r from-purplerain-hr to-pinkrain-hr hover:from-purplerain-75 hover:to-pinkrain-75 hover:brightness-98">
-        <span>👍</span> <span>Going</span>
-      </label>
+    <li class="">
+      <%= radio_button_tag :status, "attending", class: "hidden peer", checked: @invite&.attending? %>
+      <%= label_tag :status_attending, "attending", class: [helpers.rsvpLabelForm, ("hidden" unless @invite.nil? || @invite&.attending?)] do %>
+                <span>👍</span> <span>Going</span>
+      <% end %>
     </li>
-    <li class="w-full">
-      <input type="radio" id="invite-status-maybe" name="status" value="maybe" class="hidden peer" />
-      <label for="invite-status-maybe" data-modal-target="rsvp-modal" data-modal-toggle="rsvp-modal" class="
-                  aspect-square cursor-pointer relative min-w-30 md:min-w-20 max-w-40 w-full h-auto bg-purple-50 rounded-full flex flex-col justify-center items-center
-                  peer-checked:shadow-[0_0px_12px_5px_rgba(255,255,255,0.75)_inset] peer-checked:ring-5 peer-checked:ring-bluerain-hr
-                  p-2 bg-linear-to-r from-purplerain-hr to-pinkrain-hr hover:from-purplerain-75 hover:to-pinkrain-75 hover:brightness-98">
-        <span>🤔</span> <span>Maybe</span>
-      </label>
+    <li class="">
+      <%= radio_button_tag :status, "maybe", class: "hidden peer", checked: @invite&.maybe? %>
+      <%= label_tag :status_maybe, "maybe", class: [helpers.rsvpLabelForm, ("hidden" unless @invite.nil? || @invite&.maybe?)] do %>
+            <span>🤔</span> <span>Maybe</span>
+      <% end %>
     </li>
-    <li class="w-full">
-      <input type="radio" id="invite-status-cant-go" name="status" value="declined" class="hidden peer" />
-      <label for="invite-status-cant-go" data-modal-target="rsvp-modal" data-modal-toggle="rsvp-modal" class="
-                  aspect-square cursor-pointer relative min-w-30 md:min-w-20 max-w-40 w-full h-auto bg-purple-50 rounded-full flex flex-col justify-center items-center
-                  peer-checked:shadow-[0_0px_12px_5px_rgba(255,255,255,0.75)_inset] peer-checked:ring-4 peer-checked:ring-bluerain-hr
-                  p-2 bg-linear-to-r from-purplerain-hr to-pinkrain-hr hover:from-purplerain-75 hover:to-pinkrain-75 hover:brightness-98">
-        <span>❌</span> <span>Can't Go</span>
-      </label>
+    <li class="">
+      <%= radio_button_tag :status, "declined", class: "hidden peer", checked: @invite&.declined? %>
+      <%= label_tag :status_declined, "declined", class: [helpers.rsvpLabelForm, ("hidden" unless @invite.nil? || @invite&.declined?)] do %>
+            <span>❌</span> <span>Can't Go</span>
+      <% end %>
     </li>
   </ul>
-</div>
-
-<div id="rsvp-modal" tabindex="-1" aria-hidden="true" 
-     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 
-            justify-center items-center w-full md:inset-0 h-full bg-black/25">
-  <div class="relative w-full max-w-2xl max-h-full">
-    <div class="relative bg-brandlightgray/80 rounded-lg shadow-sm">
-      <!-- Modal header -->
-      <div class="flex items-center justify-between p-3 md:px-5 bg-inherit">
-        <h3 class="text-lg font-semibold text-gray-900">
-          RSVP Options
-        </h3>
-        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center" data-modal-toggle="rsvp-modal">
-          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-          </svg>
-          <span class="sr-only">Close modal</span>
-        </button>
-      </div>
-      <!-- Modal body -->
-      <div class="p-4 md:p-5 bg-inherit">
-        <ul class="flex flex-row items-center justify-center gap-3 mb-5 text-xl md:text-3xl">
-          <li class="w-full">
-            <input type="radio" id="invite-status-going" name="status" value="going" class="hidden peer" required />
-            <label for="invite-status-going" class="
-                        aspect-square cursor-pointer relative min-w-30 md:min-w-20 max-w-40 w-full h-auto bg-purple-50 rounded-full flex flex-col justify-center items-center
-                        peer-checked:shadow-[0_0px_12px_5px_rgba(255,255,255,0.75)_inset] peer-checked:ring-4 peer-checked:ring-bluerain-hr
-                        p-2 bg-linear-to-r from-purplerain-hr to-pinkrain-hr hover:from-purplerain-75 hover:to-pinkrain-75 hover:brightness-98">
-              <span>👍</span> <span>Going</span>
-            </label>
-          </li>
-          <li class="w-full">
-            <input type="radio" id="invite-status-maybe" name="status" value="maybe" class="hidden peer" />
-            <label for="invite-status-maybe" class="
-                        aspect-square cursor-pointer relative min-w-30 md:min-w-20 max-w-40 w-full h-auto bg-purple-50 rounded-full flex flex-col justify-center items-center
-                        peer-checked:shadow-[0_0px_12px_5px_rgba(255,255,255,0.75)_inset] peer-checked:ring-5 peer-checked:ring-bluerain-hr
-                        p-2 bg-linear-to-r from-purplerain-hr to-pinkrain-hr hover:from-purplerain-75 hover:to-pinkrain-75 hover:brightness-98">
-              <span>🤔</span> <span>Maybe</span>
-            </label>
-          </li>
-          <li class="w-full">
-            <input type="radio" id="invite-status-cant-go" name="status" value="declined" class="hidden peer" />
-            <label for="invite-status-cant-go" class="
-                        aspect-square cursor-pointer relative min-w-30 md:min-w-20 max-w-40 w-full h-auto bg-purple-50 rounded-full flex flex-col justify-center items-center
-                        peer-checked:shadow-[0_0px_12px_5px_rgba(255,255,255,0.75)_inset] peer-checked:ring-4 peer-checked:ring-bluerain-hr
-                        p-2 bg-linear-to-r from-purplerain-hr to-pinkrain-hr hover:from-purplerain-75 hover:to-pinkrain-75 hover:brightness-98">
-              <span>❌</span> <span>Can't Go</span>
-            </label>
-          </li>
-        </ul>
-        <button class="text-white inline-flex w-full justify-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-          Continue
-        </button>
-      </div>
-    </div>
-  </div>
 </div>

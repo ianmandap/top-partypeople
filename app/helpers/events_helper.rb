@@ -43,7 +43,7 @@ module EventsHelper
     when "maybe"
       event.past? ? "👍 WENT" : "🤔 MIGHT GO"
     when "declined"
-      "DECLINED"
+      "❌ DECLINED"
     when "waitlist"
       event.past? ? "😢 DID NOT GO" : "⏳ WAITLIST"
     end
