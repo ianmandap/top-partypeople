@@ -1,6 +1,6 @@
 <div id="<%= dom_id invite %>" class="w-full sm:w-auto my-1">
   <%= tag.div class: "flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 hover:shadow" do %>
-    <%= render AvatarPlaceholderComponent.new(placeholder_initial: invite.attendee.placeholder_initial) %>
+    <%= render AvatarComponent.new(user: invite.attendee) %>
     <div class="flex-1 ms-3 whitespace-nowrap"><%= invite.attendee.display_name %></div>
   <% end %>
 </div>

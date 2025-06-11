@@ -1,0 +1,7 @@
+<%= tag.div class: ["relative inline-flex items-center justify-center aspect-square bg-gray-600 rounded-full"],
+            style: ["background-color:", color, ";width:", width],
+            data: @data_hash do %>
+  <%= tag.span class: "font-medium text-gray-600 dark:text-gray-300" do %>
+    <%= initials %>
+  <% end %>
+<% end %>

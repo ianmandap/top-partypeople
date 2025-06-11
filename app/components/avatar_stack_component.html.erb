@@ -7,12 +7,10 @@
           <div class="tooltip-arrow" data-popper-arrow></div>
         </div>
         <% if idx == 5 && @invites.size > 5 %>
-          <%= render AvatarPlaceholderComponent.new(placeholder_initial: "#{@invites.size - 5}+", size: 14) %>
+          <%= render AvatarComponent.new(user: "#{@invites.size - 5}+", size: "3rem", override_color: "gray") %>
           <% break %>
         <% end %>
-        <%= render AvatarPlaceholderComponent.new(placeholder_initial: invite.attendee.placeholder_initial, 
-                                                    size: 14,
-                                                    data_hash: {tooltip_target: "tooltip-avatar-#{idx}"}) %>
+        <%= render AvatarComponent.new(user: invite.attendee, size: "3rem", data_hash: {tooltip_target: "tooltip-avatar-#{idx}"}) %>
       <% end %>
     </div>
   </div>

@@ -26,10 +26,6 @@ class User < ApplicationRecord
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 
-  def placeholder_initial
-    display_name[0]
-  end
-
   def upcoming_events
     # upcoming hosting events + upcoming attending events
     Event.upcoming.left_outer_joins(:invites).where("invites.attendee_id = ?", id).
