@@ -35,10 +35,11 @@
       </div>
     </div>
     <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
-      <div class="inline">
-        <%= form.submit "Submit", 
+      <%= form.submit "Submit", 
         class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 
         bg-brandblack hover:brightness-80 text-brandwhite inline-block font-medium cursor-pointer" %>
+      <div class="mt-4 text-sm text-gray-500 sm:mt-0">
+        <%= link_to "Already have an account?", new_session_path, class: "text-gray-700 underline hover:no-underline" %>
       </div>
     </div>
   </div>

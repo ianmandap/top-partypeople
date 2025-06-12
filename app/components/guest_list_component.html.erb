@@ -1,0 +1,20 @@
+<%= tag.turbo_frame id: @turbo_id do %>
+  <% if helpers.creator?(@event) || helpers.attendee?(@event) %>
+    <%= link_to event_invites_path(event_id: @event.id),
+            class: "",
+            data: { turbo_frame: "modal" } do %>
+      <div class="flex flex-col">
+        <div class="flex flex-row justify-between">
+          <div class="flex flex-col">
+            <span class="font-black">Guest List</span>
+            <span class="text-sm"><%= guest_list_subtext %></span>
+          </div>
+          <button class="cursor-pointer py-3 px-5 text-base font-medium text-center text-white rounded-lg hover:brightness-75 bg-brandblack focus:ring-4 focus:ring-blue-300">
+            View All
+          </button>
+        </div>
+        <%= render AvatarStackComponent.new(invites: @invites.accepted) %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

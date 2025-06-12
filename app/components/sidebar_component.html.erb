@@ -12,7 +12,7 @@
       <%= button_tag :submit, class: "w-full bg-gray-200 hover:brightness-80 p-5 md:px-3 md:py-5 flex flex-col justify-center items-center cursor-pointer" do %>
         Create <%= icon 'arrow-out-right-square-half', library: "boxicons", class: '' %>
       <% end %>
-    <% elsif helpers.authenticated? && helpers.on_event_path? %>
+    <% elsif helpers.authenticated? %>
       <% if edit_event? %>
         <%= link_to edit_event_path(@event), 
             class: "block w-full" do %>

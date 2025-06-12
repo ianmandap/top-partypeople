@@ -1,0 +1,2 @@
+<%= turbo_stream.replace "rsvp-modal:invite-frame-#{nil}", RsvpModalComponent.new(invite: @invite) %>
+<%= turbo_stream.replace "guest-list:#{@event&.id}", GuestListComponent.new(event: @event, turbo_id: "guest-list:#{@event.id}", invites: @event.invites.accepted) %>

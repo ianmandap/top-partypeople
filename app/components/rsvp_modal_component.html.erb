@@ -1,5 +1,6 @@
+<%= tag.turbo_frame id: "rsvp-modal:invite-frame-#{@invite&.id}" do %>
 <div class="w-full mt-3 text-2xl md:text-sm lg:text-xl xl:text-2xl">
-  <ul class="flex flex-row items-center justify-center gap-3">
+  <ul class="flex flex-row items-center justify-center">
     <li class="">
       <%= radio_button_tag :status, "attending", class: "hidden peer", checked: checked?(:attending?) %>
       <%= label_tag :status_attending, "attending", class: [helpers.rsvpLabelForm, checkHidden(:attending?)] do %>
@@ -20,3 +21,4 @@
     </li>
   </ul>
 </div>
+<% end %>

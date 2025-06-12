@@ -17,7 +17,6 @@ export default class extends Controller {
   submitEnd(e) {
     if (e.detail.success) {
       this.hideModal()
-      window.location.reload(); // hacky workaround: not using Turbo Streams to update page
     }
   }
 

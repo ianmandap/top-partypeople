@@ -1,13 +1,13 @@
-<div class="flex w-full flex-row flex-wrap items-start">
+<div class="flex w-full flex-row flex-wrap items-start justify-center lg:justify-normal">
   <% if @events.any? %>
     <% @events.each do |event| %>
       <div class="hover:brightness-80 cursor-pointer p-3 mx-2 my-4 w-65 sm:w-full max-w-sm 
                  bg-transparent text-brandblack
                  hover:bg-brandlightgray">
         <a href=<%= event_path(id: event.id) %>>
-          <div class="relative">
+          <div class="relative w-65 sm:w-full aspect-square ">
             <%= image_tag poster_path(event), 
-              class: "h-auto w-65 sm:w-full aspect-square object-cover", alt: "party image" %>
+              class: "w-[inherit] aspect-square object-cover", alt: "party image" %>
             <span class="absolute top-[8px] left-[8px] 
             bg-brandwhite text-brandblack text-sm font-bold me-2 px-2.5 py-0.5 rounded-full">
           <%= display_date_and_time(event) %>
