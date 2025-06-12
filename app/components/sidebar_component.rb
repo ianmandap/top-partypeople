@@ -5,4 +5,14 @@ class SidebarComponent < ViewComponent::Base
     @event = event
     @form = form
   end
+
+  private
+
+  def edit_event?
+    Pundit.policy(Current.user, @event).edit?
+  end
+
+  def update_event?
+    Pundit.policy(Current.user, @event).update?
+  end
 end

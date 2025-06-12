@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   before_action :authorize_user, only: %i[edit update destroy]
 
   def index
-    @events = Event.is_public.upcoming.order(start_date: :asc)
+    @events = Event.includes(:creator, :invites).is_public.upcoming.order(start_date: :asc)
   end
 
   def show
@@ -30,7 +30,11 @@ class EventsController < ApplicationController
         format.html { redirect_to @event, notice: "Event was successfully created." }
         format.json { render :show, status: :created, location: @event }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html {
+          # workaround for datepicker.js needing a full refresh preventing @event.errors from being seen
+          flash[:alert] = @event.errors
+          render :new, status: :unprocessable_entity
+         }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
@@ -42,7 +46,10 @@ class EventsController < ApplicationController
         format.html { redirect_to @event, notice: "Event was successfully updated." }
         format.json { render :show, status: :ok, location: @event }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html {
+          flash[:alert] = @event.errors
+          render :edit, status: :unprocessable_entity
+         }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end

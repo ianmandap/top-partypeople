@@ -6,16 +6,16 @@
                  hover:bg-brandlightgray">
         <a href=<%= event_path(id: event.id) %>>
           <div class="relative">
-            <%= image_tag "/posters/#{event.display_poster}" , 
+            <%= image_tag poster_path(event), 
               class: "h-auto w-65 sm:w-full aspect-square object-cover", alt: "party image" %>
             <span class="absolute top-[8px] left-[8px] 
             bg-brandwhite text-brandblack text-sm font-bold me-2 px-2.5 py-0.5 rounded-full">
-          <%= helpers.formatted_date_and_time_short(event.start_date) %>
+          <%= display_date_and_time(event) %>
         </span>
         <% if @user.present? %>
           <span class="absolute bottom-0 right-0 
             text-brandwhite bg-brandblack text-sm font-bold p-3">
-            <%= helpers.display_user_status_on_event(event: event, user: @user) %>
+            <%= display_user_status_on_event(event) %>
           </span>
         <% end %>
       </div>

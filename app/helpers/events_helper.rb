@@ -24,28 +24,4 @@ module EventsHelper
     return false if params[:id].nil?
     request.path == edit_event_path
   end
-
-  def display_user_status_on_event(event:, user:)
-    return "" if event.nil? || user.nil?
-
-    if event.creator_id == user.id
-      event.past? ? return "👑 HOSTED" : return "👑 HOSTING"
-    end
-
-    invite = Invite.find_by(event: event, attendee: user)
-    return "OPEN INVITE" if invite.nil?
-
-    case invite.status
-    when "pending"
-      event.past? ? "😢 DID NOT GO" : "⏳ PENDING"
-    when "attending"
-      event.past? ? "👍 WENT" : "👍 WILL GO"
-    when "maybe"
-      event.past? ? "👍 WENT" : "🤔 MIGHT GO"
-    when "declined"
-      "❌ DECLINED"
-    when "waitlist"
-      event.past? ? "😢 DID NOT GO" : "⏳ WAITLIST"
-    end
-  end
 end

@@ -12,8 +12,8 @@
       <%= button_tag :submit, class: "w-full bg-gray-200 hover:brightness-80 p-5 md:px-3 md:py-5 flex flex-col justify-center items-center cursor-pointer" do %>
         Create <%= icon 'arrow-out-right-square-half', library: "boxicons", class: '' %>
       <% end %>
-    <% elsif helpers.authenticated? %>
-      <% if Pundit.policy(Current.user, @event).edit? && helpers.on_event_path? %>
+    <% elsif helpers.authenticated? && helpers.on_event_path? %>
+      <% if edit_event? %>
         <%= link_to edit_event_path(@event), 
             class: "block w-full" do %>
           <li class="w-full bg-gray-200 hover:brightness-80 flex align-center p-5 md:px-3 md:py-5">
@@ -28,7 +28,7 @@
             <span class="flex-1 ml-2 whitespace-nowrap">Delete</span>
           </li>
         <% end %>
-      <% elsif Pundit.policy(Current.user, @event).update? && helpers.on_edit_event_path? %>
+      <% elsif update_event? %>
         <%= button_tag :submit, class: "w-full bg-gray-200 hover:brightness-80 p-5 md:px-3 md:py-5 flex flex-col justify-center items-center cursor-pointer" do %>
           Update <%= icon 'arrow-out-right-square-half', library: "boxicons", class: '' %>
         <% end %>

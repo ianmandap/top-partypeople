@@ -35,7 +35,7 @@ class Event < ApplicationRecord
 
   validates :title, presence: true
   validates :start_date, presence: true
-  validates :end_date, numericality: { greater_than: :start_date }, allow_blank: true, if: Proc.new { |e| e.start_date.present? }
+  validates :end_date, comparison: { greater_than: :start_date }, allow_blank: true
   validates :location, presence: true
   validates :description, presence: true
 

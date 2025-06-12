@@ -29,7 +29,7 @@
           class: "aspect-square object-contain w-full h-full max-w-[400px] md:max-w-[450px]" %>
       </div>
       <div class="flex flex-row mb-2">
-        <%= render DateTimePickerComponent.new(event: @event, name:"event[start_date]") %>
+        <%= render DateTimePickerComponent.new(event: @event, form: form) %>
       </div>
       <%= form.label :is_public, "", class: "my-2 flex flex-row gap-2 w-full text-sm cursor-pointer #{formBarColors}" do %>
         <%= form.checkbox :is_public, id: "event_is_public", class: "cursor-pointer text-teal-700 focus:ring-teal-700" %>

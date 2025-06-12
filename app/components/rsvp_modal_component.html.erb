@@ -1,20 +1,20 @@
 <div class="w-full mt-3 text-2xl md:text-sm lg:text-xl xl:text-2xl">
   <ul class="flex flex-row items-center justify-center gap-3">
     <li class="">
-      <%= radio_button_tag :status, "attending", class: "hidden peer", checked: @invite&.attending? %>
-      <%= label_tag :status_attending, "attending", class: [helpers.rsvpLabelForm, ("hidden" unless @invite.nil? || @invite&.attending?)] do %>
+      <%= radio_button_tag :status, "attending", class: "hidden peer", checked: checked?(:attending?) %>
+      <%= label_tag :status_attending, "attending", class: [helpers.rsvpLabelForm, checkHidden(:attending?)] do %>
                 <span>👍</span> <span>Going</span>
       <% end %>
     </li>
     <li class="">
-      <%= radio_button_tag :status, "maybe", class: "hidden peer", checked: @invite&.maybe? %>
-      <%= label_tag :status_maybe, "maybe", class: [helpers.rsvpLabelForm, ("hidden" unless @invite.nil? || @invite&.maybe?)] do %>
+      <%= radio_button_tag :status, "maybe", class: "hidden peer", checked: checked?(:maybe?) %>
+      <%= label_tag :status_maybe, "maybe", class: [helpers.rsvpLabelForm, checkHidden(:maybe?)] do %>
             <span>🤔</span> <span>Maybe</span>
       <% end %>
     </li>
     <li class="">
-      <%= radio_button_tag :status, "declined", class: "hidden peer", checked: @invite&.declined? %>
-      <%= label_tag :status_declined, "declined", class: [helpers.rsvpLabelForm, ("hidden" unless @invite.nil? || @invite&.declined?)] do %>
+      <%= radio_button_tag :status, "declined", class: "hidden peer", checked: checked?(:declined?) %>
+      <%= label_tag :status_declined, "declined", class: [helpers.rsvpLabelForm, checkHidden(:declined?)] do %>
             <span>❌</span> <span>Can't Go</span>
       <% end %>
     </li>
