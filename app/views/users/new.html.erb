@@ -1,5 +1,14 @@
 <% content_for :title, "Sign Up" %>
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Sign Up</h1>
-  <%= render "form", user: @user %>
-</div>
+<% if turbo_frame_request? %>
+  <%= render TurboModalComponent.new do %>
+    <div class="mx-auto md:w-2/3 w-full">
+      <h1 class="font-bold text-3xl text-center">Sign up to save your event</h1>
+      <%= render "users/form", user: @user %>
+    </div>
+  <% end %>
+<% else %>
+  <div class="mx-auto md:w-2/3 w-full">
+    <h1 class="font-bold text-4xl">Sign Up</h1>
+    <%= render "users/form", user: @user %>
+  </div>
+<% end %>

@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class SidebarComponent < ViewComponent::Base
-  def initialize(event:, form:)
+  def initialize(event:)
     @event = event
-    @form = form
   end
 
   private

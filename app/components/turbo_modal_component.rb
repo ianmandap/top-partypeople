@@ -3,7 +3,7 @@
 class TurboModalComponent < ViewComponent::Base
   include Turbo::FramesHelper
 
-  def initialize(title:)
+  def initialize(title: nil)
     @title = title
   end
 end

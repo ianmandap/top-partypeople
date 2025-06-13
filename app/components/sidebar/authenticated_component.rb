@@ -1,0 +1,19 @@
+# frozen_string_literal: true
+
+module Sidebar
+  class AuthenticatedComponent < ViewComponent::Base
+    def initialize(event:)
+      @event = event
+    end
+
+    private
+
+    def edit_event?
+      Pundit.policy(Current.user, @event).edit? && helpers.on_event_path?
+    end
+
+    def update_event?
+      Pundit.policy(Current.user, @event).update? && helpers.on_edit_event_path?
+    end
+  end
+end

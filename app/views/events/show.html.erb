@@ -110,5 +110,5 @@
     <div class="mt-10 mb-5"><%= @event.description %></div>
     <%= render GuestListComponent.new(event: @event, invites: @invites, turbo_id: "guest-list:#{@event.id}") %>
   </div>
-  <%= render SidebarComponent.new(event: @event, form: nil) %>
+  <%= render SidebarComponent.new(event: @event) %>
 </div>

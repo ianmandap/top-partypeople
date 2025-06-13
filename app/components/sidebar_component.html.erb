@@ -9,30 +9,9 @@
     aria-label="Sidebar">
   <ul class="flex flex-row md:block w-full">
     <% if helpers.on_new_event_path? %>
-      <%= button_tag :submit, class: "w-full bg-gray-200 hover:brightness-80 p-5 md:px-3 md:py-5 flex flex-col justify-center items-center cursor-pointer" do %>
-        Create <%= icon 'arrow-out-right-square-half', library: "boxicons", class: '' %>
-      <% end %>
+      <%= render Sidebar::CreateComponent.new(event: @event) %>
     <% elsif helpers.authenticated? %>
-      <% if edit_event? %>
-        <%= link_to edit_event_path(@event), 
-            class: "block w-full" do %>
-          <li class="w-full bg-gray-200 hover:brightness-80 flex align-center p-5 md:px-3 md:py-5">
-            <%= icon 'pencil', library: "boxicons" %>
-            <span class="flex-1 ml-2 whitespace-nowrap">Edit</span>
-          </li>
-        <% end %>
-        <%= link_to @event, class: "block w-full", data: { turbo_confirm: "Are you sure you want to delete this event?", turbo_method: :delete } do %>
-          <li class="w-full text-white bg-red-500 hover:brightness-80 flex align-center
-                    p-5 md:px-3 md:py-5">
-            <%= icon 'x', library: "boxicons" %>
-            <span class="flex-1 ml-2 whitespace-nowrap">Delete</span>
-          </li>
-        <% end %>
-      <% elsif update_event? %>
-        <%= button_tag :submit, class: "w-full bg-gray-200 hover:brightness-80 p-5 md:px-3 md:py-5 flex flex-col justify-center items-center cursor-pointer" do %>
-          Update <%= icon 'arrow-out-right-square-half', library: "boxicons", class: '' %>
-        <% end %>
-      <% end %>
+      <%= render Sidebar::AuthenticatedComponent.new(event: @event) %>
     <% end %>
   </ul>
 </aside>

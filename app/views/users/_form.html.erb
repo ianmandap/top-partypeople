@@ -12,25 +12,25 @@
   <div class="inline">
     <div class="flex flex-row my-8">
       <div class="relative w-full">
-        <%= form.text_field :display_name, id: "user-display-name", required: true, placeholder: " ", maxlength: 40, class: "#{formBarColors} peer" %>
+        <%= form.text_field :display_name, id: "user-display-name", required: true, placeholder: " ", maxlength: 40, autocomplete: "off", class: "#{formBarColors} peer" %>
         <label for="user-display-name" class="absolute <%= floatingLabelSmall %>">Display Name</label>
       </div>
     </div>
     <div class="flex flex-row my-8">
       <div class="relative w-full">
-        <%= form.email_field :email_address, id: "user-email-address", required: true, placeholder: " ", maxlength: 40, class: "#{formBarColors} peer" %>
+        <%= form.email_field :email_address, id: "user-email-address", required: true, placeholder: " ", maxlength: 40, autocomplete: "off", class: "#{formBarColors} peer" %>
         <label for="user-email-address" class="absolute <%= floatingLabelSmall %>">Email Address</label>
       </div>
     </div>
     <div class="flex flex-row my-8">
       <div class="relative w-full">
-        <%= form.password_field :password, id: "user-password", required: true, placeholder: " ", maxlength: 20, class: "#{formBarColors} peer" %>
+        <%= form.password_field :password, id: "user-password", required: true, placeholder: " ", maxlength: 20, autocomplete: "off", class: "#{formBarColors} peer" %>
         <label for="user-password" class="absolute <%= floatingLabelSmall %>">Password</label>
       </div>
     </div>
     <div class="flex flex-row my-8">
       <div class="relative w-full">
-        <%= form.password_field :password_confirmation, id: "user-password-confirmation", required: true, placeholder: " ", maxlength: 20, class: "#{formBarColors} peer" %>
+        <%= form.password_field :password_confirmation, id: "user-password-confirmation", required: true, placeholder: " ", maxlength: 20, autocomplete: "off", class: "#{formBarColors} peer" %>
         <label for="user-password-confirmation" class="absolute <%= floatingLabelSmall %>">Password Confirmation</label>
       </div>
     </div>
@@ -38,9 +38,11 @@
       <%= form.submit "Submit", 
         class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 
         bg-brandblack hover:brightness-80 text-brandwhite inline-block font-medium cursor-pointer" %>
-      <div class="mt-4 text-sm text-gray-500 sm:mt-0">
-        <%= link_to "Already have an account?", new_session_path, class: "text-gray-700 underline hover:no-underline" %>
-      </div>
+      <% unless authenticated? || turbo_frame_request? %>
+        <div class="mt-4 text-sm text-gray-500 sm:mt-0">
+          <%= link_to "Already have an account?", new_session_path, class: "text-gray-700 underline hover:no-underline" %>
+        </div>
+      <% end %>
     </div>
   </div>
 <% end %>
