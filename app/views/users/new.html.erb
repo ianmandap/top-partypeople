@@ -1,10 +1,14 @@
 <% content_for :title, "Sign Up" %>
 <% if turbo_frame_request? %>
   <%= render TurboModalComponent.new do %>
-    <div class="mx-auto md:w-2/3 w-full">
-      <h1 class="font-bold text-3xl text-center">Sign up to save your event</h1>
-      <%= render "users/form", user: @user %>
-    </div>
+    <%= tag.div data: { controller: "sign-up-modal", 
+                      action: "turbo:submit-end->sign-up-modal#newUserSubmit" },
+                      id: "signup-modal-container" do %>
+      <div class="mx-auto md:w-2/3 w-full">
+        <h1 class="font-bold text-3xl text-center">Sign up to save your event</h1>
+        <%= render "users/form", user: @user %>
+      </div>
+    <% end %>
   <% end %>
 <% else %>
   <div class="mx-auto md:w-2/3 w-full">

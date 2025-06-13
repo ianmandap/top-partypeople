@@ -3,7 +3,7 @@
     Create <%= icon 'arrow-out-right-square-half', library: "boxicons", class: '' %>
   <% end %>
 <% else %>
-  <%= link_to new_user_path, data: { turbo_frame: "modal" } do %>
+  <%= link_to new_user_path, id: "sign-up-turbo-anchor", data: { turbo_frame: "modal" } do %>
     <%= button_tag :submit, class: "w-full bg-gray-200 hover:brightness-80 p-5 md:px-3 md:py-5 flex flex-col justify-center items-center cursor-pointer" do %>
       Create <%= icon 'arrow-out-right-square-half', library: "boxicons", class: '' %>
     <% end %>

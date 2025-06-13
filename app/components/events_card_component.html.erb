@@ -24,10 +24,7 @@
         <div class="">
           <div class="flex items-center justify-start">
             <span class="">Hosted by</span>
-            <span class='ml-1.5'>
-              <%= render Avatar::PlaceholderComponent.new(user: event.creator) %>
-            </span>
-            <span class="ml-1.5"><%= event.creator.display_name %></span>
+            <%= render Avatar::NameplateComponent.new(event: event) %>
           </div>
         </div>
       </div>

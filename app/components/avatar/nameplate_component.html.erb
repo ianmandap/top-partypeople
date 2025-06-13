@@ -1,6 +1,13 @@
 <div>
-  <span class='ml-1.5'>
-    <%= render Avatar::PlaceholderComponent.new(user: @event.creator) %>
-  </span>
-  <span class="ml-1.5"><%= @event.creator.display_name %></span>
+  <% if @is_authenticated %>
+    <span class='ml-1.5'>
+      <%= render Avatar::PlaceholderComponent.new(user: @event.creator) %>
+    </span>
+    <span class="ml-1"><%= @event.creator.display_name %></span>
+  <% else %>
+    <span class='ml-1.5'>
+      <%= render Avatar::PlaceholderComponent.new(user: "?", override_color: "slate" ) %>
+    </span>
+    <span id="unregistered-display-name" class="ml-1"><%= "Unregistered User" %></span>
+  <% end %>
 </div>
