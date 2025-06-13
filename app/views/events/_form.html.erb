@@ -41,7 +41,7 @@
         </div>
         <span class="">Hosted by</span>
         <span class='ml-1.5'>
-          <%= render AvatarComponent.new(user: authenticated? ? Current.user : "?", override_color: "slate" ) %>
+          <%= render Avatar::PlaceholderComponent.new(user: authenticated? ? Current.user : "?", override_color: "slate" ) %>
         </span>
         <span class="ml-1.5"><%= authenticated? ? Current.user.display_name : "Unregistered User" %></span>
       </div>

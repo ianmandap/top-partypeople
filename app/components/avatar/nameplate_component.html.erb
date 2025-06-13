@@ -1,0 +1,6 @@
+<div>
+  <span class='ml-1.5'>
+    <%= render Avatar::PlaceholderComponent.new(user: @event.creator) %>
+  </span>
+  <span class="ml-1.5"><%= @event.creator.display_name %></span>
+</div>

@@ -22,10 +22,7 @@
         <%= icon 'crown', library: "boxicons" %>
       </div>
       <span class="">Hosted by</span>
-      <span class='ml-1.5'>
-        <%= render AvatarComponent.new(user: @event.creator) %>
-      </span>
-      <span class="ml-1.5"><%= @event.creator.display_name %></span>
+      <%= render Avatar::NameplateComponent.new(event: @event) %>
     </div>
     <div class="flex flex-row mb-2">
       <div class="w-auto h-auto m-1 mr-3">

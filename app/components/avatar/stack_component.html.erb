@@ -7,10 +7,10 @@
           <div class="tooltip-arrow" data-popper-arrow></div>
         </div>
         <% if max?(idx) %>
-          <%= render AvatarComponent.new(user: users_left_string, size: "3rem", override_color: "gray") %>
+          <%= render Avatar::PlaceholderComponent.new(user: users_left_string, size: "3rem", override_color: "gray") %>
           <% break %>
         <% end %>
-        <%= render AvatarComponent.new(user: invite.attendee, size: "3rem", data_hash: {tooltip_target: "tooltip-avatar-#{idx}"}) %>
+        <%= render Avatar::PlaceholderComponent.new(user: invite.attendee, size: "3rem", data_hash: {tooltip_target: "tooltip-avatar-#{idx}"}) %>
       <% end %>
     </div>
   </div>
