@@ -55,6 +55,7 @@ group :development, :test do
   gem "faker", "~> 3.5.1"
   gem "fasterer"
   gem "hotwire-livereload"
+  gem "rails-controller-testing"
   gem "rails_icons", "~> 1.3"
   gem "rspec-rails"
   gem "rubocop-airbnb"

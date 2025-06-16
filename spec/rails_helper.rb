@@ -72,6 +72,7 @@ RSpec.configure do |config|
 
   # include factory_bot helper methods
   config.include FactoryBot::Syntax::Methods
+  config.include LoginHelper
 end
 
 Shoulda::Matchers.configure do |config|

@@ -58,4 +58,15 @@ FactoryBot.define do
     food_situation       { }
     parking_instructions { }
   end
+
+  trait :attending_event do
+    transient do
+      attendee { FactoryBot.create(:user) }
+      status { :attending }
+    end
+
+    after :create do |event, options|
+      FactoryBot.create(:invite, event: event, attendee: options.attendee, status: options.status)
+    end
+  end
 end

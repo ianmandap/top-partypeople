@@ -6,18 +6,6 @@ RSpec.describe EventPolicy, type: :policy do
 
   subject { described_class }
 
-  # permissions ".scope" do
-  #   pending "add some examples to (or delete) #{__FILE__}"
-  # end
-
-  # permissions :show? do
-  #   pending "add some examples to (or delete) #{__FILE__}"
-  # end
-
-  # permissions :create? do
-  #   pending "add some examples to (or delete) #{__FILE__}"
-  # end
-
   permissions :update? do
     it "grants access if user is event's creator" do
       expect(subject).to permit(user, event)

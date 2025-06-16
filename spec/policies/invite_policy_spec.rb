@@ -8,18 +8,6 @@ RSpec.describe InvitePolicy, type: :policy do
 
   subject { described_class }
 
-  # permissions ".scope" do
-  #   pending "add some examples to (or delete) #{__FILE__}"
-  # end
-
-  # permissions :show? do
-  #   pending "add some examples to (or delete) #{__FILE__}"
-  # end
-
-  # permissions :create? do
-  #   pending "add some examples to (or delete) #{__FILE__}"
-  # end
-
   permissions :index? do
     it "grants access if user is invite's event creator" do
       expect(subject).to permit(creator, invite)
