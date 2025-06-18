@@ -1,17 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe "/events", type: :request do
-  let(:user) { FactoryBot.create(:user) }
-  let!(:event) { FactoryBot.create(:event, creator: user, title: "Created") }
-  let!(:attending_event) { FactoryBot.create(:event, :attending_event, attendee: user) }
-  let!(:random_event) { FactoryBot.create(:event, title: "Random") }
+RSpec.describe "Events", type: :request do
+  include_context 'logged in user with events'
+
   let(:valid_params) { FactoryBot.attributes_for(:event) }
   let(:invalid_params) { FactoryBot.attributes_for(:event, end_date: 50.years.ago, title: "") }
   let(:new_params) { { title: "Updated title" } }
-
-  before do
-    login(user)
-  end
 
   describe "GET /events" do
     it 'shows Public Events' do

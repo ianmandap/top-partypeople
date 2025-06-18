@@ -22,6 +22,10 @@ RSpec.describe InvitePolicy, type: :policy do
   end
 
   permissions :update? do
+    it "grants access if user is invite's creator" do
+      expect(subject).to permit(creator, invite)
+    end
+
     it "grants access if user is invite's attendee" do
       expect(subject).to permit(attendee, invite)
     end

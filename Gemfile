@@ -64,6 +64,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   gem "rubocop-rspec", require: false
   gem "ruby-lsp-factory_bot"
+  gem "ruby-lsp-rspec", require: false
   gem "solargraph", require: false
   gem "solargraph-rails", require: false
   gem "solargraph-rspec", require: false

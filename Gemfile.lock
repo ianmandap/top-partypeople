@@ -370,6 +370,8 @@ GEM
       sorbet-runtime (>= 0.5.10782)
     ruby-lsp-factory_bot (0.3.1)
       ruby-lsp (>= 0.23.0, < 0.24.0)
+    ruby-lsp-rspec (0.1.24)
+      ruby-lsp (~> 0.23.19)
     ruby-progressbar (1.13.0)
     ruby_parser (3.21.1)
       racc (~> 1.5)
@@ -522,6 +524,7 @@ DEPENDENCIES
   rubocop-rails-omakase
   rubocop-rspec
   ruby-lsp-factory_bot
+  ruby-lsp-rspec
   selenium-webdriver
   shoulda-matchers
   solargraph

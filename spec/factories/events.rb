@@ -59,14 +59,14 @@ FactoryBot.define do
     parking_instructions { }
   end
 
-  trait :attending_event do
+  trait :with_attendees do
     transient do
-      attendee { FactoryBot.create(:user) }
+      number { 3 }
       status { :attending }
     end
 
     after :create do |event, options|
-      FactoryBot.create(:invite, event: event, attendee: options.attendee, status: options.status)
+      options.number.times { FactoryBot.create(:invite, event: event, status: options.status) }
     end
   end
 end

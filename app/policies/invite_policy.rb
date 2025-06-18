@@ -19,7 +19,7 @@ class InvitePolicy < ApplicationPolicy
   end
 
   def update?
-    attendee?
+    creator? || attendee?
   end
 
   def destroy?
