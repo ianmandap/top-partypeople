@@ -63,7 +63,7 @@ RSpec.configure do |config|
   # behaviour is considered legacy and will be removed in a future version.
   #
   # To enable this behaviour uncomment the line below.
-  # config.infer_spec_type_from_file_location!
+  config.infer_spec_type_from_file_location!
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
@@ -73,6 +73,39 @@ RSpec.configure do |config|
   # include factory_bot helper methods
   config.include FactoryBot::Syntax::Methods
   config.include LoginHelper
+
+  config.before(:each, type: :system) do
+    driven_by :rack_test # rack_test by default, for performance
+  end
+
+  config.before(:each, type: :system, js: true) do
+    driven_by :selenium_chrome_headless # selenium when we need javascript
+  end
+
+  # show retry status in spec process
+  config.verbose_retry = true
+  # show exception that triggers a retry if verbose_retry is set to true
+  config.display_try_failure_messages = true
+
+  # run retry only on features
+  config.around :each, :js do |ex|
+    ex.run_with_retry retry: 3
+  end
+
+  # callback to be run between retries
+  config.retry_callback = proc do |ex|
+    # run some additional clean up task - can be filtered by example metadata
+    Capybara.reset! if ex.metadata[:js]
+  end
+
+  # Precompile the assets (used by system tests)
+  config.before(:each, type: :system, js: true) do
+    if !ENV["ASSET_PRECOMPILE_DONE"]
+      prep_passed = system "rails assets:precompile"
+      ENV["ASSET_PRECOMPILE_DONE"] = "true"
+      abort "\nYour assets didn't compile. Exiting WITHOUT running any tests. Review the output above to resolve any errors." if !prep_passed
+    end
+  end
 end
 
 Shoulda::Matchers.configure do |config|

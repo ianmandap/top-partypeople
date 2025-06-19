@@ -14,6 +14,7 @@
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require "pundit/rspec"
+require "capybara/rspec"
 require 'support/login_helper'
 require 'support/shared_context'
 
