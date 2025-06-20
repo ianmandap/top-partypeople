@@ -1,4 +1,5 @@
 class InvitesController < ApplicationController
+allow_unauthenticated_access only: [ :new ]
 before_action :ensure_frame_response, only: [ :index, :new, :edit ]
 before_action :set_user
 before_action :set_event

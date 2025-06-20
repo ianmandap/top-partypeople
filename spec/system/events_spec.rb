@@ -16,7 +16,7 @@ RSpec.describe "Event creation", type: :system, js: true do
 
       click_on("Create", match: :first)
 
-      expect(page).to have_text("Sign up to save your event")
+      expect(page).to have_text("Sign up to save your details")
 
       find('#user-display-name').set("Maya Angelou")
       find('#user-email-address').set("maya@mail.com")

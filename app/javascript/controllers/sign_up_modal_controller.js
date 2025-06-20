@@ -15,9 +15,16 @@ export default class extends Controller {
   }
 
   newUserSubmit(e) {
+    const eventsForm = document.getElementById('events-form');
+
     if (e.detail.success) {
-      const eventsForm = document.getElementById('events-form');
-      eventsForm.requestSubmit();
+      // unregistered user creates event
+      if (eventsForm) {
+        eventsForm.requestSubmit()
+      } else {
+        // unregistered user RSVP's and needs full page refresh
+        location.reload();
+      }
     }
   }
 }
