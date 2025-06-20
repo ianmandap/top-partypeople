@@ -1,10 +1,13 @@
 <% if helpers.authenticated? %>
-  <%= button_tag :submit, class: "w-full bg-gray-200 hover:brightness-80 p-5 md:px-3 md:py-5 flex flex-col justify-center items-center cursor-pointer" do %>
+  <%= button_tag :submit, id: "event-submit-button", class: "w-full bg-gray-200 hover:brightness-80 p-5 md:px-3 md:py-5 flex flex-col justify-center items-center cursor-pointer" do %>
     Create <%= icon 'arrow-out-right-square-half', library: "boxicons", class: '' %>
   <% end %>
 <% else %>
-  <%= link_to new_user_path, id: "sign-up-turbo-anchor", data: { turbo_frame: "modal" } do %>
-    <%= button_tag :submit, class: "w-full bg-gray-200 hover:brightness-80 p-5 md:px-3 md:py-5 flex flex-col justify-center items-center cursor-pointer" do %>
+  <%= link_to new_user_path, id: "sign-up-turbo-anchor", 
+                             data: { turbo_frame: "modal", 
+                                     controller: "sign-up-modal",
+                                     action: "click->sign-up-modal#newUserClick"} do %>
+    <%= button_tag :submit, id: "event-submit-button", class: "w-full bg-gray-200 hover:brightness-80 p-5 md:px-3 md:py-5 flex flex-col justify-center items-center cursor-pointer" do %>
       Create <%= icon 'arrow-out-right-square-half', library: "boxicons", class: '' %>
     <% end %>
   <% end %>
