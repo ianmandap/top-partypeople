@@ -1,10 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "Sessions", type: :system, js: true do
+RSpec.describe "Sessions", type: :system do
   let!(:user) { FactoryBot.create(:user, display_name: "John Delta", email_address: "john@mail.com") }
 
   scenario "User signs in and is redirected to their User page" do
-    driven_by :rack_test
     visit root_path
     expect(page).to have_text("Create a Party in seconds")
 

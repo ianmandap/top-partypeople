@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Sidebar
-  class AuthenticatedComponent < ViewComponent::Base
+  class EditComponent < ViewComponent::Base
     def initialize(event:)
       @event = event
     end

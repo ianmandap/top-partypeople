@@ -1,5 +1,5 @@
 RSpec.shared_context "logged in user with events" do
-  let(:user) { FactoryBot.create(:user) }
+  let(:user) { FactoryBot.create(:user, display_name: "John Delta", email_address: "john@mail.com") }
 
   let!(:event) { FactoryBot.create(:event, creator: user, title: "Created") }
   let!(:attending_event) { FactoryBot.create(:event, :with_attendees, number: 1) }

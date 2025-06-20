@@ -42,7 +42,9 @@
           <div class="tooltip-arrow" data-popper-arrow></div>
         </div>
       </div>
-      <div class=""><%= @event.max_capacity - @accepted_count %>/<%= @event.max_capacity %> spots left</div>
+      <% if @event.max_capacity %>
+        <div class=""><%= @event.max_capacity - @accepted_count %>/<%= @event.max_capacity %> spots left</div>
+      <% end %>
     </div>
     <% if @event.food_situation.present? %>
       <div class="flex flex-row mb-2">

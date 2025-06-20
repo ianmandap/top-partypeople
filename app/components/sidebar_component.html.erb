@@ -11,7 +11,7 @@
     <% if helpers.on_new_event_path? %>
       <%= render Sidebar::CreateComponent.new(event: @event) %>
     <% elsif helpers.authenticated? %>
-      <%= render Sidebar::AuthenticatedComponent.new(event: @event) %>
+      <%= render Sidebar::EditComponent.new(event: @event) %>
     <% end %>
   </ul>
 </aside>
