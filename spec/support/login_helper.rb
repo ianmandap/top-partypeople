@@ -8,5 +8,6 @@ module LoginHelper
     find('#email_address').set(user.email_address)
     find('#password').set(user.password)
     find('#login-button-new-session').click
+    expect(page).to have_text('Welcome back')
   end
 end

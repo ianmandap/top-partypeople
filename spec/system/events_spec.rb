@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Event creation", type: :system, js: true do
+RSpec.describe "Event creation flow", type: :system, js: true do
   include_context 'logged in user with events'
 
   context 'with unregistered user' do

@@ -13,19 +13,19 @@
     <ul class="flex flex-row items-center justify-center gap-3">
       <li class="w-full">
         <%= form.radio_button :status, "attending", required: true, class: "hidden peer" %>
-        <%= form.label :status_attending, "attending", class: "#{rsvpLabelForm}" do %>
+        <%= form.label :status_attending, "attending", id: "label-invite-going", class: "#{rsvpLabelForm}" do %>
                   <span>👍</span> <span>Going</span>
         <% end %>
       </li>
       <li class="w-full">
         <%= form.radio_button :status, "maybe", required: true, class: "hidden peer" %>
-        <%= form.label :status_maybe, "maybe", class: "#{rsvpLabelForm}" do %>
+        <%= form.label :status_maybe, "maybe", id: "label-invite-maybe", class: "#{rsvpLabelForm}" do %>
               <span>🤔</span> <span>Maybe</span>
         <% end %>
       </li>
       <li class="w-full">
         <%= form.radio_button :status, "declined", required: true, class: "hidden peer" %>
-        <%= form.label :status_declined, "declined", class: "#{rsvpLabelForm}" do %>
+        <%= form.label :status_declined, "declined", id: "label-invite-declined", class: "#{rsvpLabelForm}" do %>
               <span>❌</span> <span>Can't Go</span>
         <% end %>
       </li>

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Sessions", type: :system do
+RSpec.describe "Sessions flow", type: :system do
   let!(:user) { FactoryBot.create(:user, display_name: "John Delta", email_address: "john@mail.com") }
 
   scenario "User signs in and is redirected to their User page" do

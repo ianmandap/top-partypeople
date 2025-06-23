@@ -42,4 +42,12 @@ class Invite < ApplicationRecord
   end
 
   scope :accepted, -> { where(status: :attending).or(self.where(status: :maybe)) }
+
+  def self.guest_list(event_id)
+    invites = Invite.joins(:attendee)
+                    .where(event_id: event_id)
+                    .select("invites.status, users.display_name")
+
+    invites.group_by(&:status).transform_values { |group| group.map(&:display_name) }.with_indifferent_access
+  end
 end

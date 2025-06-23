@@ -4,7 +4,7 @@
     <% if @invites.any? %>
       <%= render TabsComponent.new(id: "guest-list") do |component| %>
         <% if @invites.attending.any? %>
-          <% component.with_header(header_id: "attending", header_title: "Attending #{@invites.attending.size}") %>
+          <% component.with_header(header_id: "attending", header_title: "Going #{@invites.attending.size}") %>
           <% component.with_body(header_id: "attending") do %>
             <% @invites.attending.each do |invite| %>
               <div class="flex flex-col">

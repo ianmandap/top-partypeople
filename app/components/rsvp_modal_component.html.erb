@@ -3,19 +3,19 @@
   <ul class="flex flex-row items-center justify-center">
     <li class="">
       <%= radio_button_tag :status, "attending", class: "hidden peer", checked: checked?(:attending?) %>
-      <%= label_tag :status_attending, "attending", class: [helpers.rsvpLabelForm, checkHidden(:attending?)] do %>
+      <%= label_tag :status_attending, "attending", id: "label-indicator-going", class: [helpers.rsvpLabelForm, checkHidden(:attending?)] do %>
                 <span>👍</span> <span>Going</span>
       <% end %>
     </li>
     <li class="">
       <%= radio_button_tag :status, "maybe", class: "hidden peer", checked: checked?(:maybe?) %>
-      <%= label_tag :status_maybe, "maybe", class: [helpers.rsvpLabelForm, checkHidden(:maybe?)] do %>
+      <%= label_tag :status_maybe, "maybe", id: "label-indicator-maybe", class: [helpers.rsvpLabelForm, checkHidden(:maybe?)] do %>
             <span>🤔</span> <span>Maybe</span>
       <% end %>
     </li>
     <li class="">
       <%= radio_button_tag :status, "declined", class: "hidden peer", checked: checked?(:declined?) %>
-      <%= label_tag :status_declined, "declined", class: [helpers.rsvpLabelForm, checkHidden(:declined?)] do %>
+      <%= label_tag :status_declined, "declined", id: "label-indicator-declined", class: [helpers.rsvpLabelForm, checkHidden(:declined?)] do %>
             <span>❌</span> <span>Can't Go</span>
       <% end %>
     </li>

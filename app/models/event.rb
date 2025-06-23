@@ -52,4 +52,8 @@ class Event < ApplicationRecord
   def past?
     start_date < Time.current
   end
+
+  def self.having_invites(count: 1)
+    joins(:invites).group(:id).having("count(invites.id) > ?", count)
+  end
 end
