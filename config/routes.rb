@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   resources :users, except: [ :index ]
   resources :events do
-    resources :invites, except: %i[show]
+    resources :invites, except: %i[show] do
+      get "send", on: :collection
+    end
   end
   resource :session
   resources :passwords, param: :token

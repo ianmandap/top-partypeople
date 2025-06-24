@@ -2,7 +2,8 @@
 
 module Buttons
   class SendInviteComponent < ViewComponent::Base
-    def initialize
+    def initialize(event:)
+      @event = event
     end
   end
 end

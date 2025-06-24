@@ -5,16 +5,16 @@
       <%= render RSVP::ChoicesComponent.new(invite: @invite) %>
     <% end %>
   <% elsif helpers.creator?(@event) %>
-    <%= render Buttons::SendInviteComponent.new %>
+    <%= render Buttons::SendInviteComponent.new(event: @event) %>
   <% else %>
     <div class="flex flex-row justify-center gap-3">
       <div class="invisible">
-        <%= render Buttons::SendInviteComponent.new if @invite %>
+        <%= render Buttons::SendInviteComponent.new(event: @event) if @invite %>
       </div>
       <%= link_to new_event_invite_path(@event), data: { turbo_frame: "modal" } do %>
         <%= render RSVP::ChoicesComponent.new(invite: @invite) %>
       <% end %>
-      <%= render Buttons::SendInviteComponent.new if @invite %>
+      <%= render Buttons::SendInviteComponent.new(event: @event) if @invite %>
     </div>
   <% end %>
 </div>

@@ -66,6 +66,9 @@ def destroy
   end
 end
 
+def show
+end
+
 private
   def ensure_frame_response
     return unless Rails.env.development?

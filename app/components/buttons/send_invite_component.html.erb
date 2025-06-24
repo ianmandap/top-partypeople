@@ -1,13 +1,19 @@
-<%= tag.div id: "invite-button",
+<%= link_to send_event_invites_path(@event),
+        class: "self-center",
+        data: { turbo_frame: "modal" } do %>
+  <%= tag.turbo_frame id: "turbo-invite-message" do %>
+    <%= tag.div id: "invite-button",
           class: 'aspect-square cursor-pointer mx-3 mt-4 w-fit h-auto
                   rounded-full flex flex-col justify-center items-center
                   transition delay-25 duration-250
                   p-5 bg-brandwhite hover:brightness-95 self-center',
           data: { "tooltip-target": "tooltip-invite-button",
-                  "tooltip-placement": "right" } do %>
-  <span><%= icon 'bxl-telegram', library: "boxicons" %></span>
-<% end %>
-<div id="tooltip-invite-button" role="tooltip" 
+                  "tooltip-placement": "right"} do %>
+      <span><%= icon 'bxl-telegram', library: "boxicons" %></span>
+    <% end %>
+  <% end %>
+  <div id="tooltip-invite-button" role="tooltip"
      class="absolute z-10 invisible inline-block p-5 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0">
-  Invite your Mutuals!
-</div>
+    Invite your Mutuals!
+  </div>
+<% end %>
