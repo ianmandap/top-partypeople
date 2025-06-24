@@ -1,6 +1,7 @@
-<%= tag.turbo_frame id: "rsvp-modal:invite-frame-#{@invite&.id}" do %>
+<%= tag.turbo_frame id: "rsvp-modal:invite-frame-#{@invite&.id}", class: "" do %>
 <div class="w-full mt-3 text-2xl md:text-sm lg:text-xl xl:text-2xl">
-  <ul class="flex flex-row items-center justify-center">
+  <ul class="w-full flex flex-row items-center justify-center relative"
+      data-tooltip-target="tooltip-selected-status">
     <li class="">
       <%= radio_button_tag :status, "going", class: "hidden peer", checked: checked?(:going?) %>
       <%= label_tag :going, "going", id: "label-indicator-going", class: [helpers.rsvpLabelForm, checkHidden(:going?)] do %>
@@ -20,5 +21,10 @@
       <% end %>
     </li>
   </ul>
+  <div id="tooltip-selected-status" role="tooltip" 
+      class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0">
+    Click to Change
+    <div class="tooltip-arrow" data-popper-arrow></div>
+  </div>
 </div>
 <% end %>

@@ -11,15 +11,21 @@
         class: "aspect-square object-contain w-full h-full max-w-[400px] md:max-w-[450px]"  %>
       <% if !authenticated? %>
         <%= link_to new_user_path, id: "sign-up-turbo-anchor", 
-                             data: { turbo_frame: "modal"} do %>
+                                   data: { turbo_frame: "modal"} do %>
           <%= render RsvpModalComponent.new(invite: @invite) %>
         <% end %>
+      <% elsif creator?(@event) %>
+        <%= render Buttons::SendInviteComponent.new %>
       <% else %>
-        <% unless creator?(@event) %>
+        <div class="flex flex-row justify-center gap-3">
+          <div class="invisible">
+            <%= render Buttons::SendInviteComponent.new if @invite %>
+          </div>
           <%= link_to new_event_invite_path(@event), data: { turbo_frame: "modal" } do %>
             <%= render RsvpModalComponent.new(invite: @invite) %>
           <% end %>
-        <% end %>
+          <%= render Buttons::SendInviteComponent.new if @invite %>
+        </div>
       <% end %>
     </div>
     <div class="text-3xl font-black mt-5"><%= formatted_date(@event.start_date) %></div>
