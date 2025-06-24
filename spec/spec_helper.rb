@@ -13,10 +13,14 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'simplecov'
+SimpleCov.start 'rails'
+
 require "pundit/rspec"
 require "capybara/rspec"
 require 'support/login_helper'
 require 'support/shared_context'
+
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

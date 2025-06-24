@@ -62,7 +62,7 @@ FactoryBot.define do
   trait :with_attendees do
     transient do
       number { 3 }
-      status { :attending }
+      status { :going }
     end
 
     after :create do |event, options|

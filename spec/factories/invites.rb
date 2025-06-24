@@ -26,6 +26,6 @@ FactoryBot.define do
 
     association :event, factory: :event
     association :attendee, factory: :user
-    status { :attending }
+    status { :going }
   end
 end

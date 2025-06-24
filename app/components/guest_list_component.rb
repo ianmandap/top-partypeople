@@ -11,7 +11,7 @@ class GuestListComponent < ViewComponent::Base
 
   def guest_list_subtext
     maybe_count = @invites.maybe.count
-    text = "#{@invites.attending.count} Going"
+    text = "#{@invites.going.count} Going"
     text += " · #{maybe_count} Maybe" unless maybe_count.zero?
 
     text

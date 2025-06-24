@@ -82,4 +82,5 @@ group :test do
   gem "rspec-retry"
   gem "selenium-webdriver"
   gem "shoulda-matchers"
+  gem "simplecov", require: false
 end

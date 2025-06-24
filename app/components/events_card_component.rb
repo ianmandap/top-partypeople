@@ -29,7 +29,7 @@ class EventsCardComponent < ViewComponent::Base
     case invite.status
     when "pending"
       event.past? ? "😢 DID NOT GO" : "⏳ PENDING"
-    when "attending"
+    when "going"
       event.past? ? "👍 WENT" : "👍 WILL GO"
     when "maybe"
       event.past? ? "👍 WENT" : "🤔 MIGHT GO"

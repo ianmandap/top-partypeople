@@ -41,7 +41,7 @@ RSpec.describe "Invites flow", type: :system, js: true do
 
   context 'with authenticated user on an event they are attending' do
     before do
-      FactoryBot.create_list(:invite, 1, event: attending_event, status: :attending)
+      FactoryBot.create_list(:invite, 1, event: attending_event, status: :going)
       FactoryBot.create_list(:invite, 1, event: attending_event, status: :maybe)
       FactoryBot.create_list(:invite, 1, event: attending_event, status: :declined)
 
@@ -55,10 +55,10 @@ RSpec.describe "Invites flow", type: :system, js: true do
       click_on "View All"
 
       guest_list = Invite.guest_list(attending_event.id)
-      guest_list[:attending].each do |name|
+      guest_list[:going].each do |name|
         expect(page).to have_text(name)
       end
-      expect(page).to have_text("Going #{guest_list[:attending].count}")
+      expect(page).to have_text("Going #{guest_list[:going].count}")
       expect(page).to have_text("Declined #{guest_list[:declined].count}")
     end
 

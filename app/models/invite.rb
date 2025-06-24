@@ -29,7 +29,7 @@ class Invite < ApplicationRecord
 
   enum :status, {
     pending: 0,
-    attending: 1,
+    going: 1,
     maybe: 2,
     declined: 3,
     waitlist: 4,
@@ -41,7 +41,7 @@ class Invite < ApplicationRecord
     end
   end
 
-  scope :accepted, -> { where(status: :attending).or(self.where(status: :maybe)) }
+  scope :accepted, -> { where(status: :going).or(self.where(status: :maybe)) }
 
   def self.guest_list(event_id)
     invites = Invite.joins(:attendee)

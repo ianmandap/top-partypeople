@@ -36,7 +36,7 @@ RSpec.describe Invite, type: :model do
 
     it do
       is_expected.to define_enum_for(:status).
-                     with_values([ :pending, :attending, :maybe, :declined, :waitlist ]).
+                     with_values([ :pending, :going, :maybe, :declined, :waitlist ]).
                      backed_by_column_of_type(:integer)
     end
 

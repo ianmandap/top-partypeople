@@ -12,8 +12,8 @@
   <div class="w-full mt-3 text-2xl md:text-sm lg:text-xl xl:text-2xl">
     <ul class="flex flex-row items-center justify-center gap-3">
       <li class="w-full">
-        <%= form.radio_button :status, "attending", required: true, class: "hidden peer" %>
-        <%= form.label :status_attending, "attending", id: "label-invite-going", class: "#{rsvpLabelForm}" do %>
+        <%= form.radio_button :status, "going", required: true, class: "hidden peer" %>
+        <%= form.label :status_going, "going", id: "label-invite-going", class: "#{rsvpLabelForm}" do %>
                   <span>👍</span> <span>Going</span>
         <% end %>
       </li>
