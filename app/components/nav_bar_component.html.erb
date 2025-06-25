@@ -1,6 +1,6 @@
 <nav class="bg-transparent backdrop-blur-sm fixed w-full z-20 top-0 start-0 text-brandblack">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <%= link_to root_path, class: "flex items-center space-x-3" do%>
+    <%= link_to determine_path, class: "flex items-center space-x-3" do%>
       <%= image_tag 'favicon/favicon.svg', class: "w-8 h-8" %>
       <span class="self-center text-3xl font-work-sans font-bold text-brandblack
         hover:bg-linear-to-r hover:text-transparent hover:bg-clip-text hover:from-purplerain hover:to-pinkrain">Party People</span>
@@ -23,7 +23,7 @@
     </div>
     <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
       <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-8 md:flex-row md:mt-0">
-        <%= render NavBarListItemComponent.new(name: "Home", path: root_path) %>
+        <%= render NavBarListItemComponent.new(name: "Home", path: determine_path) %>
         <%= render NavBarListItemComponent.new(name: "Public Events", path: events_path) %>
       </ul>
     </div>

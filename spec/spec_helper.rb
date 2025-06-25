@@ -14,8 +14,6 @@
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'simplecov'
-SimpleCov.start 'rails'
-
 require "pundit/rspec"
 require "capybara/rspec"
 require 'support/login_helper'

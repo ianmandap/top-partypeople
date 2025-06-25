@@ -65,6 +65,7 @@ group :development, :test do
   gem "rubocop-rspec", require: false
   gem "ruby-lsp-factory_bot"
   gem "ruby-lsp-rspec", require: false
+  gem "simplecov", require: false
   gem "solargraph", require: false
   gem "solargraph-rails", require: false
   gem "solargraph-rspec", require: false
@@ -82,5 +83,4 @@ group :test do
   gem "rspec-retry"
   gem "selenium-webdriver"
   gem "shoulda-matchers"
-  gem "simplecov", require: false
 end

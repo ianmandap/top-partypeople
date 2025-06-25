@@ -1,10 +1,11 @@
 /* Custom fonts first */
 @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&family=Questrial&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
-@import "flowbite/src/themes/default";
+/* disabled flowbite themes due to dependency problems working with Rails */
+/* @import "flowbite/src/themes/default";
 @plugin "flowbite/plugin";
 @source "../../../node_modules/flowbite";
-@source "../../../node_modules/flowbite-datepicker";
+@source "../../../node_modules/flowbite-datepicker"; */
 
 
 /* custom theme for brand colors */

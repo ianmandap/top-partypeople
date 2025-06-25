@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root "pages#home"
   get "/about", to: "pages#about"
+  get "/demo", to: "pages#demo"
 
   resources :users, except: [ :index ]
   resources :events do

@@ -1,6 +1,19 @@
 <div class='h-full'>
-  <%= render JumbotronComponent.new(
-  title: "Create a Party in seconds",
-  text: "and plan for your most awaited party yet."
-  ) %>
+  <%= render JumbotronComponent.new(title: "Create a Party in seconds", text: "and plan for your most awaited party yet.") do |component| %>
+    <% component.with_button do %>
+      <%= render CreateEventBtnComponent.new %>
+    <% end %>
+    <% component.with_image do %>
+      <%= render VideoComponent.new(filename: "3188954-sd_640_360_25fps.mp4") %>
+    <% end %>
+  <% end %>
+  <%= render JumbotronComponent.new(title: "", text: "Or login as a demo user and see how it works") do |component| %>
+    <% component.with_button do %>
+      <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 hover:brightness-75">
+        <%= link_to demo_path, class: "inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-brandblack focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900" do %>
+          Try Demo
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
 </div>

@@ -1,14 +1,16 @@
 <section class="w-full flex flex-col md:flex-row">
-  <div class="w-full md:w-2/5 py-8 px-4 mx-auto text-center lg:py-36 lg:mx-5">
+  <div class="w-full md:w-2/5 py-8 px-4 mx-auto text-center lg:py-36 mx-5">
     <h1 class="mb-4 text-xl tracking-tight leading-none text-gray-900 md:text-2xl lg:text-4xl font-bold dark:text-brandblack font-work-sans">
       <%= @title %>
     </h1>
     <p class="mb-8 text-xl font-normal">
       <%= @text %>
     </p>
-    <%= render CreateEventBtnComponent.new %>
+    <%= button %>
   </div>
-  <div class="w-full md:w-3/5">
-    <%= render VideoComponent.new(filename: "3188954-sd_640_360_25fps.mp4") %>
-  </div>
+  <% if image %>
+    <div class="w-full md:w-3/5">
+      <%= image %>
+    </div>
+  <% end %>
 </section>

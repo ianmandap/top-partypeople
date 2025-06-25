@@ -97,15 +97,6 @@ RSpec.configure do |config|
     # run some additional clean up task - can be filtered by example metadata
     Capybara.reset! if ex.metadata[:js]
   end
-
-  # Precompile the assets (used by system tests)
-  config.before(:each, type: :system, js: true) do
-    if !ENV["ASSET_PRECOMPILE_DONE"]
-      prep_passed = system "rails assets:precompile"
-      ENV["ASSET_PRECOMPILE_DONE"] = "true"
-      abort "\nYour assets didn't compile. Exiting WITHOUT running any tests. Review the output above to resolve any errors." if !prep_passed
-    end
-  end
 end
 
 Shoulda::Matchers.configure do |config|

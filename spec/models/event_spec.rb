@@ -68,6 +68,7 @@ RSpec.describe Event, type: :model do
 
   describe '.past' do
     it 'returns events with start_date in the past' do
+      Event.destroy_all
       FactoryBot.create_list(:event, 2, :past)
       FactoryBot.create(:event)
 
@@ -77,6 +78,7 @@ RSpec.describe Event, type: :model do
 
   describe '.upcoming' do
     it 'returns events with start_date that are upcoming' do
+      Event.destroy_all
       FactoryBot.create_list(:event, 2, :past)
       FactoryBot.create(:event)
 
