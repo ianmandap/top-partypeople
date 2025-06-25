@@ -1,0 +1,21 @@
+<div data-controller="events" class="self-center">
+  <%= tag.div id: "copy-link-button",
+          class: 'aspect-square cursor-pointer mx-3 mt-4 w-fit h-auto
+                  rounded-full flex flex-col justify-center items-center
+                  transition delay-25 duration-250
+                  p-5 bg-brandwhite hover:brightness-95',
+          data: { action: "click->events#copyLink",
+                  "popover-target": "copy-invite-popover",
+                  "popover-trigger": "click"} do %>
+    <span><%= icon 'link', library: "boxicons" %></span>
+    <span class="text-sm">Copy Link</span>
+  <% end %>
+  <div data-popover id="copy-invite-popover" role="tooltip" class="absolute z-10 invisible inline-block w-fit text-sm transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-xs opacity-0">
+    <div class="px-3 py-2">
+      <%= link_to event_path(@event), data: {"events-target": "anchor" } do %>
+        <p>&#129395; Link Copied!</p>
+      <% end %>
+    </div>
+    <div data-popper-arrow></div>
+  </div>
+</div>

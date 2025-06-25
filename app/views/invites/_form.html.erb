@@ -14,19 +14,19 @@
       <li class="w-full">
         <%= form.radio_button :status, "going", required: true, class: "hidden peer" %>
         <%= form.label :status_going, "going", id: "label-invite-going", class: "#{rsvpLabelForm}" do %>
-                  <span>👍</span> <span>Going</span>
+          <span>&#128077;</span> <span>Going</span>
         <% end %>
       </li>
       <li class="w-full">
         <%= form.radio_button :status, "maybe", required: true, class: "hidden peer" %>
         <%= form.label :status_maybe, "maybe", id: "label-invite-maybe", class: "#{rsvpLabelForm}" do %>
-              <span>🤔</span> <span>Maybe</span>
+          <span>&#129300;</span> <span>Maybe</span>
         <% end %>
       </li>
       <li class="w-full">
         <%= form.radio_button :status, "declined", required: true, class: "hidden peer" %>
         <%= form.label :status_declined, "declined", id: "label-invite-declined", class: "#{rsvpLabelForm}" do %>
-              <span>❌</span> <span>Can't Go</span>
+          <span>&#10060;</span> <span>Can't Go</span>
         <% end %>
       </li>
     </ul>

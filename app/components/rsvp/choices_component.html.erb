@@ -1,32 +1,32 @@
 <%= tag.turbo_frame id: "rsvp-modal:invite-frame-#{@invite&.id}", class: "" do %>
-<div class="w-full mt-3 text-2xl md:text-sm lg:text-xl xl:text-2xl">
-  <ul class="w-full flex flex-row items-center justify-center relative"
+  <div class="w-full mt-3 text-2xl md:text-sm lg:text-xl xl:text-2xl">
+    <ul class="w-full flex flex-row items-center justify-center relative"
       data-tooltip-target="tooltip-selected-status">
-    <li class="">
-      <%= radio_button_tag :status, "going", class: "hidden peer", checked: checked?(:going?) %>
-      <%= label_tag :going, "going", id: "label-indicator-going", class: [helpers.rsvpLabelForm, checkHidden(:going?)] do %>
-                <span>👍</span> <span>Going</span>
-      <% end %>
-    </li>
-    <li class="">
-      <%= radio_button_tag :status, "maybe", class: "hidden peer", checked: checked?(:maybe?) %>
-      <%= label_tag :status_maybe, "maybe", id: "label-indicator-maybe", class: [helpers.rsvpLabelForm, checkHidden(:maybe?)] do %>
-            <span>🤔</span> <span>Maybe</span>
-      <% end %>
-    </li>
-    <li class="">
-      <%= radio_button_tag :status, "declined", class: "hidden peer", checked: checked?(:declined?) %>
-      <%= label_tag :status_declined, "declined", id: "label-indicator-declined", class: [helpers.rsvpLabelForm, checkHidden(:declined?)] do %>
-            <span>❌</span> <span>Can't Go</span>
-      <% end %>
-    </li>
-  </ul>
-  <% if @invite %>
-  <div id="tooltip-selected-status" role="tooltip" 
+      <li class="">
+        <%= radio_button_tag :status, "going", class: "hidden peer", checked: checked?(:going?) %>
+        <%= label_tag :going, "going", id: "label-indicator-going", class: [helpers.rsvpLabelForm, checkHidden(:going?)] do %>
+          <span>&#128077;</span> <span>Going</span>
+        <% end %>
+      </li>
+      <li class="">
+        <%= radio_button_tag :status, "maybe", class: "hidden peer", checked: checked?(:maybe?) %>
+        <%= label_tag :status_maybe, "maybe", id: "label-indicator-maybe", class: [helpers.rsvpLabelForm, checkHidden(:maybe?)] do %>
+          <span>&#129300;</span> <span>Maybe</span>
+        <% end %>
+      </li>
+      <li class="">
+        <%= radio_button_tag :status, "declined", class: "hidden peer", checked: checked?(:declined?) %>
+        <%= label_tag :status_declined, "declined", id: "label-indicator-declined", class: [helpers.rsvpLabelForm, checkHidden(:declined?)] do %>
+          <span>&#10060;</span> <span>Can't Go</span>
+        <% end %>
+      </li>
+    </ul>
+    <% if @invite %>
+      <div id="tooltip-selected-status" role="tooltip" 
        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0">
-    Click to Change
-    <div class="tooltip-arrow" data-popper-arrow></div>
+        Click to Change
+        <div class="tooltip-arrow" data-popper-arrow></div>
+      </div>
+    <% end %>
   </div>
-  <% end %>
-</div>
 <% end %>

@@ -2,6 +2,6 @@
 <%= render TurboModalComponent.new(title: "Send Invites") do %>
   <div class="flex flex-col">
     <span class="text-lg">Send event link to invite mutuals!</span>
-    <span>[LINK]</span>
+    <%= render Buttons::CopyLinkComponent.new(event: @event) %>
   </div>
 <% end %>

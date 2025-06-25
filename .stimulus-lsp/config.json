@@ -1,12 +1,13 @@
 {
   "version": "1.0.4",
   "createdAt": "2025-06-24T13:41:14.115Z",
-  "updatedAt": "2025-06-24T14:12:39.628Z",
+  "updatedAt": "2025-06-25T06:42:17.407Z",
   "options": {
     "ignoredControllerIdentifiers": [],
     "ignoredAttributes": [
       "data-dismiss-target",
       "data-modal-target",
+      "data-popover-target",
       "data-tabs-target",
       "data-tooltip-target"
     ]
