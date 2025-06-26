@@ -15,14 +15,14 @@
     <div class="text-xl text-branddarkgray brightness-70 mb-5"><%= formatted_time(@event.start_date) %></div>
     <div class="flex items-center justify-start mb-4">
       <div class="w-auto h-auto m-1 mr-3">
-        <%= icon 'crown', library: "boxicons" %>
+        <%= inline_svg_tag('boxicons/crown.svg')%>
       </div>
       <span class="">Hosted by</span>
       <%= render Avatar::NameplateComponent.new(event: @event) %>
     </div>
     <div class="flex flex-row mb-2">
       <div class="w-auto h-auto m-1 mr-3">
-        <%= icon 'pin', library: "boxicons", data: { "tooltip-target": "tooltip-location" } %>
+        <%= inline_svg_tag('boxicons/pin.svg', data: { "tooltip-target": "tooltip-location" }) %>
         <div id="tooltip-location" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0">
           Location
           <div class="tooltip-arrow" data-popper-arrow></div>
@@ -32,7 +32,7 @@
     </div>
     <div class="flex flex-row mb-2">
       <div class="w-auto h-auto m-1 mr-3">
-        <%= icon 'user-circle', library: "boxicons", data: { "tooltip-target": "tooltip-max-capacity" } %>
+        <%= inline_svg_tag('boxicons/user-circle.svg', data: { "tooltip-target": "tooltip-max-capacity" }) %>
         <div id="tooltip-max-capacity" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0">
           Max Capacity
           <div class="tooltip-arrow" data-popper-arrow></div>
@@ -45,7 +45,7 @@
     <% if @event.food_situation.present? %>
       <div class="flex flex-row mb-2">
         <div class="w-auto h-auto m-1 mr-3">
-          <%= icon 'fork-knife', library: "boxicons", data: { "tooltip-target": "tooltip-food-situation" } %>
+          <%= inline_svg_tag('boxicons/fork-knife.svg', data: { "tooltip-target": "tooltip-food-situation" }) %>
           <div id="tooltip-food-situation" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0">
             Food Situation
             <div class="tooltip-arrow" data-popper-arrow></div>
@@ -57,7 +57,7 @@
     <% if @event.dress_code.present? %>
       <div class="flex flex-row mb-2">
         <div class="w-auto h-auto m-1 mr-3">
-          <%= icon 'dress', library: "boxicons", data: { "tooltip-target": "tooltip-dress-code" } %>
+          <%= inline_svg_tag('boxicons/dress.svg', data: { "tooltip-target": "tooltip-dress-code" }) %>
           <div id="tooltip-dress-code" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0">
             Dress Code
             <div class="tooltip-arrow" data-popper-arrow></div>
@@ -69,7 +69,7 @@
     <% if @event.accommodation.present? %>
       <div class="flex flex-row mb-2">
         <div class="w-auto h-auto m-1 mr-3">
-          <%= icon 'building-house', library: "boxicons", data: { "tooltip-target": "tooltip-accommodation" } %>
+          <%= inline_svg_tag('boxicons/building-house.svg', data: { "tooltip-target": "tooltip-accommodation" }) %>
           <div id="tooltip-accommodation" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0">
             Accommodation
             <div class="tooltip-arrow" data-popper-arrow></div>
@@ -81,7 +81,7 @@
     <% if @event.parking_instructions.present? %>
       <div class="flex flex-row mb-2">
         <div class="w-auto h-auto m-1 mr-3">
-          <%= icon 'car', library: "boxicons", data: { "tooltip-target": "tooltip-parking-instructions" } %>
+          <%= inline_svg_tag('boxicons/car.svg', data: { "tooltip-target": "tooltip-parking-instructions" }) %>
           <div id="tooltip-parking-instructions" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0">
             Parking Instructions
             <div class="tooltip-arrow" data-popper-arrow></div>
@@ -93,7 +93,7 @@
     <% if @event.additional_info %>
       <div class="flex flex-row mb-2">
         <div class="w-auto h-auto m-1 mr-3">
-          <%= icon 'info-circle', library: "boxicons", data: { "tooltip-target": "tooltip-additional-info" } %>
+          <%= inline_svg_tag('boxicons/info-circle.svg', data: { "tooltip-target": "tooltip-additional-info" }) %>
           <div id="tooltip-additional-info" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0">
             Additional Info
             <div class="tooltip-arrow" data-popper-arrow></div>

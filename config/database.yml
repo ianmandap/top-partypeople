@@ -81,18 +81,7 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: partypeople-prod-db
-    username: top_partypeople
-    password: <%= ENV["TOP_PARTYPEOPLE_DATABASE_PASSWORD"] %>
-  cache:
-    <<: *primary_production
-    database: partypeople-prod-db-cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_production
-    database: partypeople-prod-db-queue
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_production
-    database: partypeople-prod-db-cable
-    migrations_paths: db/cable_migrate
+    database: partypeople-db
+    username: partypeople_db_user
+    password: <%= ENV["DATABASE_PASSWORD"] %>
+    url: <%= ENV["DATABASE_URL"] %>

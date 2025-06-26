@@ -40,7 +40,11 @@ gem "thruster", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "bcrypt", "~> 3.1.20"
+gem "factory_bot_rails"
+gem "faker", "~> 3.5.1"
+gem "inline_svg"
 gem "pundit", "~> 2.5"
+gem "view_component"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -51,12 +55,9 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "annotaterb"
-  gem "factory_bot_rails"
-  gem "faker", "~> 3.5.1"
   gem "fasterer"
   gem "hotwire-livereload"
   gem "rails-controller-testing"
-  gem "rails_icons", "~> 1.3"
   gem "rspec-rails"
   gem "rubocop-airbnb"
   gem "rubocop-performance", require: false
@@ -69,7 +70,6 @@ group :development, :test do
   gem "solargraph", require: false
   gem "solargraph-rails", require: false
   gem "solargraph-rspec", require: false
-  gem "view_component"
 end
 
 group :development do
