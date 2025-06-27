@@ -1,5 +1,5 @@
 <% if helpers.authenticated? %>
-  <%= button_tag :submit, id: "event-submit-button", class: "w-full bg-gray-200 hover:brightness-80 p-5 md:px-3 md:py-5 flex flex-col justify-center items-center cursor-pointer" do %>
+  <%= button_tag :submit, id: "event-submit-button", class: "w-full bg-gray-200 hover:contrast-60 p-5 md:px-3 md:py-5 flex flex-col justify-center items-center cursor-pointer" do %>
     Create <%= inline_svg_tag('boxicons/arrow-out-right-square-half.svg') %>
   <% end %>
 <% else %>
@@ -7,7 +7,7 @@
                              data: { turbo_frame: "modal", 
                                      controller: "sign-up-modal",
                                      action: "click->sign-up-modal#newUserClick"} do %>
-    <%= button_tag :submit, id: "event-submit-button", class: "w-full bg-gray-200 hover:brightness-80 p-5 md:px-3 md:py-5 flex flex-col justify-center items-center cursor-pointer" do %>
+    <%= button_tag :submit, id: "event-submit-button", class: "w-full bg-gray-200 hover:contrast-60 p-5 md:px-3 md:py-5 flex flex-col justify-center items-center cursor-pointer" do %>
       Create <%= inline_svg_tag('boxicons/arrow-out-right-square-half.svg') %>
     <% end %>
   <% end %>

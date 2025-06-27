@@ -1,0 +1,37 @@
+<nav class="bg-transparent backdrop-blur-sm fixed w-full z-20 top-0 start-0 text-brandblack">
+  <div class="flex flex-wrap items-center justify-between mx-auto p-4">
+    <%= link_to determine_path, class: "flex items-center space-x-3" do%>
+      <%= image_tag 'favicon/favicon.svg', class: "w-8 h-8" %>
+      <span class="self-center text-3xl font-work-sans font-bold text-brandblack
+        hover:bg-linear-to-r hover:text-transparent hover:bg-clip-text hover:from-purplerain hover:to-pinkrain">Party People</span>
+    <% end %>
+    <div class="sm:order-last flex flex-row">
+      <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-default" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+      </button>
+      <% if helpers.authenticated? %>
+        <%= render UserDropdownComponent.new(user: Current.user) %>
+      <% else %>
+        <div class="hidden sm:flex flex-row gap-2">
+          <%= render TopNav::LoginCreateComponent.new %>
+        </div>
+      <% end %>
+    </div>
+    <div class="items-center justify-between hidden w-full sm:flex sm:w-auto" id="navbar-sticky">
+      <ul class="bg-pinkrain-75 sm:bg-transparent flex flex-col p-4 sm:p-0 mt-4 sm:mt-0 font-medium sm:items-center sm:space-x-2 md:space-x-8 sm:flex-row w-auto">
+        <%= render TopNav::BreadcrumbComponent.new(name: "Home", path: determine_path) %>
+        <%= render TopNav::BreadcrumbComponent.new(name: "Public Events", path: events_path) %>
+        <div id="nav-bar-avatar-login">
+          <% unless helpers.authenticated? %>
+            <div class="flex flex-col sm:hidden gap-2">
+              <%= render TopNav::LoginCreateComponent.new %>
+            </div>
+          <% end %>
+        </div>
+      </ul>
+    </div>
+  </div>
+</nav>

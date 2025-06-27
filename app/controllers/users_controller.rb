@@ -27,8 +27,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         start_new_session_for @user
-        format.html { redirect_to root_path, notice: "User was successfully created." }
-        format.turbo_stream
+        format.html { redirect_to user_path(@user), notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }

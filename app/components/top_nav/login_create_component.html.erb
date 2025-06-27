@@ -1,0 +1,10 @@
+<%= link_to "Login", new_session_path, {
+class: "text-brandwhite bg-brandblack font-bold hover:contrast-60 text-center
+          focus:ring-4 focus:ring-brandlightgray rounded-lg text-sm px-5 py-2.5"
+} %>
+<% unless helpers.on_new_event_path? %>
+  <%= link_to "Create", new_event_path, {
+class: "text-brandblack bg-brandwhite font-bold hover:brightness-80 text-center
+          focus:ring-4 focus:ring-brandlightgray rounded-lg text-sm px-5 py-2.5"
+} %>
+<% end %>

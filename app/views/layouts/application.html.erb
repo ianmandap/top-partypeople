@@ -20,7 +20,7 @@
   </head>
   <body 
     class="min-h-screen flex flex-col bg-linear-to-r from-purplerain-75 via-pinkrain-75 to-bluerain-75 text-brandblack font-questrial">
-    <%= render NavBarComponent.new(user: @user) %>
+    <%= render TopNav::BarComponent.new(user: @user) %>
     <main class="grow container mx-auto mt-24 px-5 flex">
       <%= yield %>
     </main>
